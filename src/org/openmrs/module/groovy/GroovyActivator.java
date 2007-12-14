@@ -52,6 +52,7 @@ public class GroovyActivator implements Activator {
 		out = new StringWriter();
 		PrintWriter output = new PrintWriter(out);
 		binding.setVariable("out", output);
+		binding.setVariable("admin", Context.getAdministrationService());
 		binding.setVariable("cohort", Context.getCohortService());
 		binding.setVariable("concept", Context.getConceptService());
 		binding.setVariable("encounter", Context.getEncounterService());
@@ -59,8 +60,10 @@ public class GroovyActivator implements Activator {
 		binding.setVariable("locale", Context.getLocale());
 		binding.setVariable("logic", Context.getLogicService());
 		binding.setVariable("obs", Context.getObsService());
+		binding.setVariable("order", Context.getOrderService());
 		binding.setVariable("patient", Context.getPatientService());
 		binding.setVariable("person", Context.getPersonService());
+		binding.setVariable("program", Context.getProgramWorkflowService());
 		binding.setVariable("user", Context.getUserService());
 		shell = new GroovyShell(binding);
 	}
