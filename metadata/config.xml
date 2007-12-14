@@ -5,8 +5,8 @@
 	
 	<!-- Base Module Properties -->
 	<id>groovy</id>
-	<name>Groovy Module</name>
-	<version>1.0</version>
+	<name>Groovy</name>
+	<version>1.1</version>
 	<package>org.openmrs.module.@MODULE_ID@</package>
 	<author>Burke Mamlin</author>
 	<description>

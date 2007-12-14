@@ -9,16 +9,23 @@ public class DWRGroovyService {
 
 	public String eval(String script) {
 
-		if (gma == null)
-			gma = (GroovyActivator) ModuleFactory.getModuleById("groovy")
-					.getActivator();
-
-		gma.clearBuffer();
+		getGMA().clearBuffer();
 		try {
-			Object value = gma.getShell().evaluate(script);
+			Object value = getGMA().getShell().evaluate(script);
 		} catch (Exception e) {
 			return "Exception: " + e.getMessage();
 		}
-		return gma.getBuffer();
+		return getGMA().getBuffer();
+	}
+	
+	public void reset() {
+		getGMA().resetShell();
+	}
+	
+	private GroovyActivator getGMA() {
+		if (gma == null)
+			gma = (GroovyActivator) ModuleFactory.getModuleById("groovy")
+					.getActivator();
+		return gma;
 	}
 }

@@ -24,13 +24,21 @@ function callGroovy() {
 		}
 		);
 }
+function resetGroovy() {
+	document.getElementById("groovyScript").value = "";
+	DWRGroovyService.reset();
+}
 </script>
 
 <p>
   <spring:message code="groovy.info"/>
 </p>
 <textarea id="groovyScript" cols="80" rows="10"></textarea> <br/>
-<input type="button" value="GO" onclick="callGroovy()" />
+<input type="button" value="<spring:message code="groovy.go-button"/>" onclick="callGroovy()" />
+&nbsp;&nbsp;
+<input type="button" value="<spring:message code="groovy.reset-button"/>" onclick="resetGroovy()" />
+&nbsp;&nbsp;
+<a href="http://groovy.codehaus.org/Documentation" target="_groovy_doc"><spring:message code="groovy.documentation-link" /></a>
 <hr />
 <div id="groovyOut"></div>
 
