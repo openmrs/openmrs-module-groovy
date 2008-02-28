@@ -2,9 +2,12 @@
 <!-- ********************************************************* -->
 <!-- ** Basic Module                                        ** -->
 <!-- **	                                                    ** -->
-<!-- ** @version 1.0                                        ** -->
+<!-- ** @version 1.1                                        ** -->
 <!-- ********************************************************* -->
 <project name="Groovy" default="package-module">
+
+	<property name="compile.target" value="1.5" />
+	<echo message="Java compile target (javac -target): ${compile.target}" />
 
 	<!-- *********************************************************** -->
 	<!-- **                     TARGETS                           ** -->
@@ -52,13 +55,13 @@
 		</copy>
 
 		<!--  Compile module java files -->
-		<javac destdir="build" classpathref="classpath" debug="true" debuglevel="lines,source" target="1.5">
+		<javac destdir="build" classpathref="classpath" debug="true" debuglevel="lines,source" target="${compile.target}">
 			<src path="src/" />
 			<include name="**/*.java" />
 		</javac>
 
 		<!--  Compile module web java files -->
-		<javac destdir="build" classpathref="classpath" debug="true" debuglevel="lines,source" target="1.5">
+		<javac destdir="build" classpathref="classpath" debug="true" debuglevel="lines,source" target="${compile.target}">
 			<compilerarg line="-g" />
 			<src path="web/src/" />
 			<include name="**/*.java" />
