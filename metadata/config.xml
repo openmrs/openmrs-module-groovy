@@ -6,7 +6,10 @@
 	<!-- Base Module Properties -->
 	<id>groovy</id>
 	<name>Groovy</name>
-	<version>1.1</version>
+	<version>1.2</version>
+	<!-- 1.2 Groovy 1.5.4, added patientSet, displays "Running..." while running -->
+	<!-- 1.1 filled out services -->
+	<!-- 1.0 initial version -->
 	<package>org.openmrs.module.@MODULE_ID@</package>
 	<author>Burke Mamlin</author>
 	<description>

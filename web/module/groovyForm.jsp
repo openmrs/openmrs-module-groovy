@@ -16,6 +16,7 @@ function groovyError(message) {
 	document.getElementById("groovyOut").innertHTML = message;
 }
 function callGroovy() {
+	document.getElementById("groovyOut").innerHTML = "<em>Running...</em>";
 	DWRGroovyService.eval(
 		document.getElementById("groovyScript").value,
 		{ 
