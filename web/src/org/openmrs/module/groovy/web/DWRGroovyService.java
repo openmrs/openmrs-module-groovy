@@ -9,11 +9,11 @@ import org.openmrs.module.groovy.GroovyActivator;
 
 public class DWRGroovyService {
 
-	private GroovyActivator gma = null;
+	private GroovyActivator gma;
 
 	public String eval(String script) {
 		
-		Object result = null;
+		Object result;
 
 		getGMA().clearBuffer();
 		try {

@@ -31,8 +31,8 @@ import org.openmrs.module.Activator;
 public class GroovyActivator implements Activator {
 
 	private Log log = LogFactory.getLog(this.getClass());
-	private GroovyShell shell = null;
-	private StringWriter out = null;
+	private GroovyShell shell;
+	private StringWriter out;
 
 	/**
 	 * @see org.openmrs.module.Activator#startup()
