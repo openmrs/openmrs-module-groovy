@@ -4,7 +4,7 @@
 <!-- **	                                                    ** -->
 <!-- ** @version 1.1                                        ** -->
 <!-- ********************************************************* -->
-<project name="Groovy" default="package-module">
+<project name="Groovy Module" default="package-module">
 
 	<property name="compile.target" value="1.5" />
 	<echo message="Java compile target (javac -target): ${compile.target}" />
