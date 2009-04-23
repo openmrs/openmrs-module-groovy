@@ -13,16 +13,10 @@
  */
 package org.openmrs.module.groovy;
 
-import groovy.lang.Binding;
-import groovy.lang.GroovyShell;
-
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.api.context.Context;
 import org.openmrs.module.Activator;
+import org.openmrs.util.OpenmrsUtil;
 
 /**
  * This class contains the logic that is run every time this module
@@ -31,59 +25,21 @@ import org.openmrs.module.Activator;
 public class GroovyActivator implements Activator {
 
 	private Log log = LogFactory.getLog(this.getClass());
-	private GroovyShell shell;
-	private StringWriter out;
+
 
 	/**
 	 * @see org.openmrs.module.Activator#startup()
 	 */
 	public void startup() {
-		log.info("Starting Groovy Module");
+		OpenmrsUtil.getDirectoryInApplicationDataDirectory("groovy");
+        log.info("Starting Groovy Module");
 	}
-	
-	public GroovyShell getShell() {
-		if (shell == null)
-			resetShell();
-		return shell;
-	}
-	
-	public void resetShell() {
-		Binding binding = new Binding();
-		out = new StringWriter();
-		PrintWriter output = new PrintWriter(out);
-		binding.setVariable("out", output);
-		binding.setVariable("admin", Context.getAdministrationService());
-		binding.setVariable("cohort", Context.getCohortService());
-		binding.setVariable("concept", Context.getConceptService());
-		binding.setVariable("encounter", Context.getEncounterService());
-		binding.setVariable("form", Context.getFormService());
-		binding.setVariable("locale", Context.getLocale());
-		binding.setVariable("logic", Context.getLogicService());
-		binding.setVariable("obs", Context.getObsService());
-		binding.setVariable("order", Context.getOrderService());
-		binding.setVariable("patient", Context.getPatientService());
-		binding.setVariable("patientSet", Context.getPatientSetService());
-		binding.setVariable("person", Context.getPersonService());
-		binding.setVariable("program", Context.getProgramWorkflowService());
-		binding.setVariable("user", Context.getUserService());
-		shell = new GroovyShell(binding);
-	}
-	
-	public String getBuffer() {
-		return out.toString();
-	}
-	
-	public void clearBuffer() {
-		if (out != null && out.getBuffer() != null && out.getBuffer().length() > 0)
-			out.getBuffer().delete(0, out.getBuffer().length()-1);
-	}
-	
+
 	/**
 	 *  @see org.openmrs.module.Activator#shutdown()
 	 */
 	public void shutdown() {
-		log.info("Shutting down Groovy Module");
-		shell = null;
+		log.info("Shutting down Groovy Module");	
 	}
 	
 }
