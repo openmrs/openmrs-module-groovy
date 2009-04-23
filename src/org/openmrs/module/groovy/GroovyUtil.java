@@ -13,26 +13,19 @@
  */
 package org.openmrs.module.groovy;
 
+import groovy.lang.Binding;
+import groovy.lang.GroovyShell;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.api.context.Context;
-import org.openmrs.util.OpenmrsUtil;
 import org.codehaus.groovy.control.CompilationFailedException;
-import groovy.lang.GroovyShell;
-import groovy.lang.Binding;
+import org.openmrs.api.context.Context;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.StringWriter;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.io.Writer;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class GroovyUtil {
     private Log log = LogFactory.getLog(getClass());
-    public static final String DATA_DIRECTORY = OpenmrsUtil.getDirectoryInApplicationDataDirectory("groovy").getAbsolutePath();
 
 
     private static GroovyShell getShell() {
