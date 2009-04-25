@@ -16,13 +16,19 @@
         src="${pageContext.request.contextPath}/moduleResources/groovy/js/codemirror.js"></script>
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/moduleResources/groovy/js/mirrorframe.js"></script>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/moduleResources/groovy/js/groovy.js"></script>
 
 <link rel="stylesheet" type="text/css"
       href="${pageContext.request.contextPath}/moduleResources/groovy/css/redmond/jquery-ui-1.7.1.custom.css"/>
 
+<link rel="stylesheet" type="text/css"
+      href="${pageContext.request.contextPath}/moduleResources/groovy/css/main.css"/>
+
 <script type="text/javascript">
+    $(document).ready(function() {
+        $(function() {
+            $("#textarea-container").resizable({ handles: 's', alsoResize: 'iframe' });
+        });
+    });    
     function groovyOutput(str) {
         $("#groovyOut").html(str);
     }
@@ -60,6 +66,7 @@
         continuousScanning: 500,
         lineNumbers: true,
         textWrapping: false,
+        autoMatchParens: true,
         tabMode: "spaces"
     });
 </script>

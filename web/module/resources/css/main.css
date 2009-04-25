@@ -1,0 +1,35 @@
+body {
+	font-family: Arial;
+	margin: 0px;
+}
+
+h1 {
+	background: #5C9CCC url('../css/redmond/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png') repeat-x scroll 50% 50%;
+	padding: 5px;
+	margin: 0px;
+	color: white;
+}
+
+.border {
+	background-color: #FAFAFF;
+	border: 1px solid gray;
+}
+
+.hidden {
+	display: none;
+}
+
+#button-bar {
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+
+.CodeMirror-line-numbers {
+	color: gray;
+	background-color: lightgray;
+	padding: 5px;
+	margin-right: 5px;
+	font-family: monospace;
+	font-size: 10pt;
+}
