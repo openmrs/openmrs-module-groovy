@@ -19,6 +19,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.groovy.control.CompilationFailedException;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.groovy.service.GroovyModuleService;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -35,6 +36,8 @@ public class GroovyUtil {
 
     private static Binding setBindings() {
         Binding binding = new Binding();
+        StringWriter output = new StringWriter();
+        binding.setVariable("out",new PrintWriter(output));
         binding.setVariable("admin", Context.getAdministrationService());
         binding.setVariable("cohort", Context.getCohortService());
         binding.setVariable("concept", Context.getConceptService());
@@ -67,5 +70,9 @@ public class GroovyUtil {
             return "<b>Exception:</b> " + e.getMessage() + "<br/>" + trace.toString();
         }
         return result == null ? "" : result.toString();
-    }    
+    }
+    public static GroovyModuleService getService() {
+        return Context.getService(GroovyModuleService.class);
+    }
+
 }
