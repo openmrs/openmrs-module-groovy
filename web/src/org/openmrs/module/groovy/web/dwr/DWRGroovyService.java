@@ -1,4 +1,4 @@
-package org.openmrs.module.groovy.web;
+package org.openmrs.module.groovy.web.dwr;
 
 import org.openmrs.module.groovy.GroovyUtil;
 
