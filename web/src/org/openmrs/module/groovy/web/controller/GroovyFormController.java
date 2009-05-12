@@ -13,70 +13,57 @@
  */
 package org.openmrs.module.groovy.web.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.validation.BindException;
-import org.springframework.validation.Errors;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.SimpleFormController;
-import org.springframework.web.servlet.view.RedirectView;
-import org.openmrs.module.groovy.service.GroovyModuleService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.validation.BindingResult;
 import org.openmrs.module.groovy.GroovyScript;
 import org.openmrs.module.groovy.GroovyUtil;
+import org.openmrs.module.groovy.validators.GroovyScriptValidator;
+import org.openmrs.module.groovy.service.GroovyModuleService;
 import org.openmrs.api.context.Context;
+
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * This controller backs and saves the Groovy module settings
  */
-public class GroovyFormController extends SimpleFormController {
+@Controller
+@RequestMapping("/module/groovy/groovy.form")
+public class GroovyFormController {
 
     /**
-     * Logger for this class and subclasses
+     * Logger for this class
      */
     protected final Log log = LogFactory.getLog(getClass());
 
-    @Override
-    protected Map<String, Object> referenceData(HttpServletRequest request, Object obj, Errors err) throws Exception {
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("scripts", GroovyUtil.getService().getAllScripts());
-        return map;
+
+    @RequestMapping(method = RequestMethod.GET )    
+    public String setupForm(@RequestParam(value="id",required=false) Integer id, ModelMap model, HttpServletRequest request) {
+        GroovyScript script = id != null ? Context.getService(GroovyModuleService.class).getScriptById(id) : new GroovyScript();
+        model.addAttribute("script", script);
+        return "/module/groovy/groovyForm";
     }
 
-
-    @Override
-    protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object object, BindException exceptions) throws Exception {
-        GroovyModuleService svc = GroovyUtil.getService();
-        GroovyScript script = (GroovyScript) object;
-        System.out.println(script.getId());
-        script = svc.saveGroovyScript(script);
-        return new ModelAndView(new RedirectView(getSuccessView() + "?id=" + script.getId()));
-    }
-
-    /**
-     * This class returns the form backing object.  This can be a string, a boolean, or a normal
-     * java pojo.
-     *
-     * @see org.springframework.web.servlet.mvc.AbstractFormController#formBackingObject(javax.servlet.http.HttpServletRequest)
-     */
-    @Override
-    protected GroovyScript formBackingObject(HttpServletRequest request) throws Exception {
-        GroovyModuleService svc = GroovyUtil.getService();
-        if (request.getParameter("id") != null) {
-            try {
-                final Integer id = Integer.valueOf(request.getParameter("id"));
-                return svc.getScriptById(id);
-            } catch (NumberFormatException e) {
-                return new GroovyScript();
-            }
+    @RequestMapping(method = RequestMethod.POST)
+        public String processSubmit(@ModelAttribute("script") GroovyScript script, BindingResult result, SessionStatus status) {
+        new GroovyScriptValidator().validate(script, result);
+        if(result.hasErrors()) {
+            return "/module/groovy/groovyForm";
+        } else {
+            GroovyUtil.getService().saveGroovyScript(script);
+            return "redirect:/module/groovy/groovyForm?id="+script.getId();
         }
-        return new GroovyScript();
-
     }
 }
+
+
+
+

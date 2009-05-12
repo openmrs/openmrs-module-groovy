@@ -4,6 +4,7 @@
     <classpathentry kind="src" path="src" />
     <classpathentry kind="src" path="test" />
     <classpathentry kind="src" path="web/src" />
+    <classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/groovy-1.6.0" />
     <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" />
     <classpathentry kind="lib" path="lib-common/commons-logging-1.0.4.jar" />
     <classpathentry kind="lib" path="lib-common/servlet-api.jar" />
@@ -20,6 +21,9 @@
     <classpathentry kind="lib" path="lib-common/dbunit-2.2.jar" />
     <classpathentry kind="lib" path="lib-common/spring-webmvc.jar" />
     <classpathentry kind="lib" path="lib-common/spring-2.5.1.jar" />
+    <classpathentry kind="lib" path="lib/ant-1.7.0.jar" />
+    <classpathentry kind="lib" path="lib/ant-launcher.jar" />
+    <classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.hibernate:hibernate-annotations:3.3.0.ga" />
     <classpathentry kind="output" path="build" />
 </classpath>
 

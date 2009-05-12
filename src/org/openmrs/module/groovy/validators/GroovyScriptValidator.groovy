@@ -19,7 +19,7 @@ public class GroovyScriptValidator implements Validator {
         GroovyScript script = (GroovyScript) obj;
         if (script.getScript() != null) {
             try {
-                GroovyUtil.evaluate(script.getScript());
+                Object o = GroovyUtil.eval(script.getScript());
             } catch (CompilationFailedException ex) {
                 errors.rejectValue("script", null, ex.getMessage());
             }

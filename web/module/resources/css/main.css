@@ -1,5 +1,5 @@
 body {
-	font-family: Arial;
+	font-family: Arial ;
 	margin: 0px;
 }
 
@@ -19,11 +19,21 @@ h1 {
 	display: none;
 }
 
+#textarea-container {
+	margin-bottom: 10px;
+}
+
 #button-bar {
 	padding: 5px;
 	margin-bottom: 20px;
 }
 
+#loadingDiv {
+	position: fixed;
+	background-color: white;
+	right: 10px;
+	top: 12px;
+}
 
 .CodeMirror-line-numbers {
 	color: gray;
@@ -32,4 +42,17 @@ h1 {
 	margin-right: 5px;
 	font-family: monospace;
 	font-size: 10pt;
+}
+
+.ui-tabs .ui-tabs-hide {
+    display: none;
+}
+
+.ui-tabs .ui-tabs-panel {
+	padding: 2px;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+	padding: 2px 4px 2px 4px;
+	font-size: smaller;
 }

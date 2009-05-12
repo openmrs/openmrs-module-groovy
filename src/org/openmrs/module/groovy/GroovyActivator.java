@@ -13,10 +13,16 @@
  */
 package org.openmrs.module.groovy;
 
+import groovy.lang.Binding;
+import groovy.lang.GroovyShell;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.api.context.Context;
 import org.openmrs.module.Activator;
-import org.openmrs.util.OpenmrsUtil;
 
 /**
  * This class contains the logic that is run every time this module
@@ -26,20 +32,18 @@ public class GroovyActivator implements Activator {
 
 	private Log log = LogFactory.getLog(this.getClass());
 
-
 	/**
 	 * @see org.openmrs.module.Activator#startup()
 	 */
 	public void startup() {
-		OpenmrsUtil.getDirectoryInApplicationDataDirectory("groovy");
-        log.info("Starting Groovy Module");
+		log.info("Starting Groovy Module");
 	}
 
 	/**
 	 *  @see org.openmrs.module.Activator#shutdown()
 	 */
 	public void shutdown() {
-		log.info("Shutting down Groovy Module");	
+		log.info("Shutting down Groovy Module");        
 	}
 	
 }

@@ -3,30 +3,21 @@
 <!-- Beans to add to the current Application context definition -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
-    <bean id="groovyUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-    	<property name="mappings">
-            <props>
-	           <prop key="module/@MODULE_ID@/groovy.form">groovyForm</prop>
-	    </props>
-	</property>
-    </bean>
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
 
-    <!-- Controllers -->
-	<bean id="groovyScriptValidator" class="org.openmrs.module.groovy.validators.GroovyScriptValidator"/>
+	<context:component-scan base-package="@MODULE_PACKAGE@.web.controller" />
 
-    <bean id="groovyForm" class="org.openmrs.module.groovy.web.controller.GroovyFormController">
-	    <property name="sessionForm" value="false"/>
-        <property name="commandName" value="command"/>
-        <property name="validator" ref="groovyScriptValidator"/>
-        <property name="formView" value="/module/@MODULE_ID@/groovyForm"/>
-	    <property name="successView" value="groovy.form"/>
-    </bean>
-
-
-    <!-- /Controllers -->
+   
 
     <!-- Services -->
 
