@@ -111,7 +111,8 @@ public class GroovyUtil {
             'org.apache.', 'org.mortbay.',
             'java.', 'javax.', 'sun.',
             'groovy.', 'org.codehaus.groovy.',
-            'org.springframework.','org.directwebremoting.'
+            'org.springframework.','org.directwebremoting.',
+            'org.openmrs.'
     ]
     def trace = t.getStackTrace()
     def newTrace = []
