@@ -116,7 +116,7 @@ public class GroovyUtil {
     def newTrace = []
     trace.each {stackTraceElement ->
       if (filtered.every { !stackTraceElement.className.startsWith(it) }) {
-        newTrace.append(stackTraceElement);
+        newTrace << stackTraceElement; 
       }
     }
     def clean = newTrace.toArray(newTrace as StackTraceElement[])

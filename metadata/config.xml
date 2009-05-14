@@ -72,6 +72,7 @@
                 <include method="eval"/>
             </create>
             <convert match="java.lang.StackTraceElement" converter="bean"/>
+            <convert match="java.lang.Throwable" converter="bean"/>
         </allow>
 
         <signatures>
