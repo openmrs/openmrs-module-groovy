@@ -94,11 +94,11 @@ public class GroovyUtil {
       stacktrace << (e.getMessage().replaceFirst("startup failed, Script1.groovy: ", ""))
     }
     final String output = getBuffer()
-    final String res = result ? result.toString() : null
-    final def ret = new String[3];
+    final String res = result ? result.toString() : "null"
+    final def ret = new String[3]
     ret[0] = res
-    ret[1] = getBuffer()
-    ret[2] =  stacktrace ? stacktrace.toString() : "";
+    ret[1] = output
+    ret[2] =  stacktrace ? stacktrace.toString() : ""
     return ret
   }
 
@@ -111,12 +111,13 @@ public class GroovyUtil {
             'org.apache.', 'org.mortbay.',
             'java.', 'javax.', 'sun.',
             'groovy.', 'org.codehaus.groovy.',
+            'org.springframework.','org.directwebremoting.'
     ]
     def trace = t.getStackTrace()
     def newTrace = []
     trace.each {stackTraceElement ->
       if (filtered.every { !stackTraceElement.className.startsWith(it) }) {
-        newTrace << stackTraceElement; 
+        newTrace << stackTraceElement
       }
     }
     def clean = newTrace.toArray(newTrace as StackTraceElement[])
