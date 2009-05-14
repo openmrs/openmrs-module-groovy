@@ -32,12 +32,12 @@ public class GroovyUtil {
 
 
   private static GroovyShell getShell() {
-    GroovyShell shell = new GroovyShell(setBindings())
+    final GroovyShell shell = new GroovyShell(setBindings())
     return shell
   }
 
   private static Binding setBindings() {
-    Binding binding = new Binding()
+    final Binding binding = new Binding()
     out = new StringWriter()
     binding.setVariable("out", new PrintWriter(out))
     binding.setVariable("admin", Context.getAdministrationService())
@@ -106,22 +106,22 @@ public class GroovyUtil {
     return Context.getService(GroovyModuleService.class)
   }
 
-  static def sanitizeStacktrace(t) {
-    def filtered = [
+  static def sanitizeStacktrace(final def t) {
+    final def filtered = [
             'org.apache.', 'org.mortbay.',
             'java.', 'javax.', 'sun.',
             'groovy.', 'org.codehaus.groovy.',
             'org.springframework.','org.directwebremoting.',
             'org.openmrs.'
     ]
-    def trace = t.getStackTrace()
-    def newTrace = []
+    final def trace = t.getStackTrace()
+    final def newTrace = []
     trace.each {stackTraceElement ->
       if (filtered.every { !stackTraceElement.className.startsWith(it) }) {
         newTrace << stackTraceElement
       }
     }
-    def clean = newTrace.toArray(newTrace as StackTraceElement[])
+    final def clean = newTrace.toArray(newTrace as StackTraceElement[])
     t.stackTrace = clean
   }
 }
