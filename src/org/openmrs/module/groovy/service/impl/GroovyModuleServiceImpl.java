@@ -1,13 +1,13 @@
 package org.openmrs.module.groovy.service.impl;
 
-import org.openmrs.api.impl.BaseOpenmrsService;
+import java.util.Date;
+import java.util.List;
+
 import org.openmrs.api.context.Context;
-import org.openmrs.module.groovy.service.GroovyModuleService;
+import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.groovy.GroovyScript;
 import org.openmrs.module.groovy.db.hibernate.GroovyModuleDAO;
-
-import java.util.List;
-import java.util.Date;
+import org.openmrs.module.groovy.service.GroovyModuleService;
 
 public class GroovyModuleServiceImpl extends BaseOpenmrsService implements GroovyModuleService {
 
@@ -17,22 +17,18 @@ public class GroovyModuleServiceImpl extends BaseOpenmrsService implements Groov
         this.dao = dao;
     }
 
-    @Override
     public List<GroovyScript> getAllScripts() {
         return dao.getAllScripts();
     }
 
-    @Override
     public GroovyScript getScriptById(Integer id) {
         return dao.getScriptById(id);
     }
 
-    @Override
     public void deleteGroovyScript(GroovyScript script) {
         dao.deleteGroovyScript(script);
     }
 
-    @Override
     public GroovyScript saveGroovyScript(GroovyScript script) {
         Date now = new Date();
         script.setCreated(now);

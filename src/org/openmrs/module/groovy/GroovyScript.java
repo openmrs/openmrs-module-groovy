@@ -1,9 +1,8 @@
 package org.openmrs.module.groovy;
 
-import org.openmrs.User;
-
 import java.util.Date;
-import java.text.MessageFormat;
+
+import org.openmrs.User;
 
 public class GroovyScript {
     Integer id;
