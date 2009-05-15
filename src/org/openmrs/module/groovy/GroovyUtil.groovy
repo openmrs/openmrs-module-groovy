@@ -107,8 +107,8 @@ public class GroovyUtil {
   }
 
   /**
-   * This method contains code based on groovywebconsole
-   * code available @
+   * This method contains code based on groovywebconsole.
+   * Code available @
    * http://github.com/glaforge/groovywebconsole/tree/master
    * Special thanks to Guillaume Laforge for granting the
    * permission to use this as I wished.
