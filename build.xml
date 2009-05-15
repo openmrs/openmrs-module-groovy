@@ -82,8 +82,11 @@
 
         <!-- Copy module web data -->
         <copy todir="build/web/module/">
-            <fileset dir="web/module/" includes="**/*"/>
+            <fileset dir="web/module/" includes="**/*" excludes="**/*.png"/>
             <filterset refid="variables.to.replace"/>
+        </copy>
+        <copy todir="build/web/module/">
+            <fileset dir="web/module/" includes="**/*.png"/>
         </copy>
 
         <!-- Copy lib folder -->
