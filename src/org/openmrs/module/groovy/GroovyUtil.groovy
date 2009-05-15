@@ -95,10 +95,8 @@ public class GroovyUtil {
     }
     final String output = getBuffer()
     final String res = result ? result.toString() : "null"
-    final def ret = new String[3]
-    ret[0] = res
-    ret[1] = output
-    ret[2] =  stacktrace ? stacktrace.toString() : ""
+    final String trace = stacktrace ? stacktrace.toString() : ""
+    final def ret = [res,output,trace] as String[]    
     return ret
   }
 
