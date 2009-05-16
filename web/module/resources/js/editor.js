@@ -655,6 +655,10 @@ var Editor = (function(){
           this.options.saveFunction();
           event.stop();
         }
+        else if (code == 88 && this.options.submitFunction) { // X
+          this.options.submitFunction();
+          event.stop();
+        }
       }
     },
 

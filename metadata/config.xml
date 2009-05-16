@@ -71,8 +71,7 @@
                 <param name="class" value="org.openmrs.module.@MODULE_ID@.web.dwr.DWRGroovyService"/>
                 <include method="eval"/>
             </create>
-            <convert match="java.lang.StackTraceElement" converter="bean"/>
-            <convert match="java.lang.Throwable" converter="bean"/>
+            <convert match="java.lang.StackTraceElement" converter="bean"/>            
         </allow>
 
         <signatures>

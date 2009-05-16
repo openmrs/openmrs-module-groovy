@@ -38,8 +38,7 @@
     <textarea id="groovyScript" name="script" cols="140" rows="40">${script.script}</textarea>
 </div>
 <div id="button-bar">
-	<input id="executeButton" type="button" value="Execute" />
-    <br/>
+	<input id="executeButton" type="button" value="<spring:message code="groovy.execute"/>"/>&nbsp;
     <input type="text" value="${script.name}"/> <input type="submit" value="<spring:message code="groovy.save"/>"/>
 </div>
         <div id="tabs">
@@ -74,7 +73,10 @@
         lineNumbers: true,
         textWrapping: false,
         autoMatchParens: true,
-        tabMode: "spaces"
+        tabMode: "spaces",
+        submitFunction: function() {
+            $("#executeButton").click();
+        }
     });
 </script>
 <%@ include file="/WEB-INF/template/footer.jsp" %>
