@@ -43,9 +43,9 @@
 </div>
 <div id="tabs">
     <ul>
-    	<li><a href="#tabs-result">Result</a></li>
-    	<li><a href="#tabs-output">Output</a></li>
-    	<li><a href="#tabs-stacktrace">Stacktrace</a></li>
+    	<li><a href="#tabs-result"><spring:message code="groovy.result-tab"/></a></li>
+    	<li><a href="#tabs-output"><spring:message code="groovy.output-tab"/></a></li>
+    	<li><a href="#tabs-stacktrace"><spring:message code="groovy.stacktrace-tab"/></a></li>
     </ul>
 
     <div id="tabs-result">
