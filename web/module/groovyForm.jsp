@@ -29,7 +29,8 @@
 
 
 <p>
-    <spring:message code="groovy.info"/>
+    <spring:message code="groovy.info"/><br/>
+    <spring:message code="groovy.hotkeys"/>
 </p>
 
 
