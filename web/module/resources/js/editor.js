@@ -642,7 +642,7 @@ var Editor = (function(){
         }
         event.stop();
       }
-      else if (event.ctrlKey || event.metaKey) {
+      else if (event.altKey || event.ctrlKey || event.metaKey) {
         if ((event.shiftKey && code == 90) || code == 89) { // shift-Z, Y
           select.scrollToNode(this.history.redo());
           event.stop();
@@ -655,7 +655,7 @@ var Editor = (function(){
           this.options.saveFunction();
           event.stop();
         }
-        else if (code == 88 && this.options.submitFunction) { // X
+        else if ((event.shiftKey &&  code == 82) || code == 82 && this.options.submitFunction) { // alt+r
           this.options.submitFunction();
           event.stop();
         }
