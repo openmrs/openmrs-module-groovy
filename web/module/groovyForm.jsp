@@ -30,40 +30,37 @@
 
 <p>
     <spring:message code="groovy.info"/><br/>
-    <spring:message code="groovy.hotkeys"/>
 </p>
-
-
 
 <div id="textarea-container" class="border">
     <textarea id="groovyScript" name="script" cols="140" rows="40">${script.script}</textarea>
 </div>
 <div id="button-bar">
 	<input id="executeButton" type="button" value="<spring:message code="groovy.execute"/>"/>&nbsp;
+	<a href="http://groovy.codehaus.org/Documentation" target="_groovy_doc"><spring:message
+        code="groovy.documentation-link"/></a>&nbsp;
     <input type="text" value="${script.name}"/> <input type="submit" value="<spring:message code="groovy.save"/>"/>
 </div>
-        <div id="tabs">
-            <ul>
-            	<li><a href="#tabs-result">Result</a></li>
-            	<li><a href="#tabs-output">Output</a></li>
-            	<li><a href="#tabs-stacktrace">Stacktrace</a></li>
-            </ul>
+<div id="tabs">
+    <ul>
+    	<li><a href="#tabs-result">Result</a></li>
+    	<li><a href="#tabs-output">Output</a></li>
+    	<li><a href="#tabs-stacktrace">Stacktrace</a></li>
+    </ul>
 
-            <div id="tabs-result">
-                <pre id="result" class="border hidden"></pre>
-            </div>
+    <div id="tabs-result">
+        <pre id="result" class="border hidden"></pre>
+    </div>
 
-            <div id="tabs-output">
-                <pre id="output" class="border hidden"></pre>
-            </div>
+    <div id="tabs-output">
+        <pre id="output" class="border hidden"></pre>
+    </div>
 
-            <div id="tabs-stacktrace">
-                <pre id="stacktrace" class="border hidden"></pre>
-            </div>
-        </div>
-<a href="http://groovy.codehaus.org/Documentation" target="_groovy_doc"><spring:message
-        code="groovy.documentation-link"/></a>
-<hr/>
+    <div id="tabs-stacktrace">
+        <pre id="stacktrace" class="border hidden"></pre>
+    </div>
+</div>
+<div id="running-html" style="display:none"><h1><spring:message code="groovy.running"/></h1></div>
 <script language="javascript">
     var editor = CodeMirror.fromTextArea('groovyScript', {
         height: "300px",

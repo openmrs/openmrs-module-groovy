@@ -1,7 +1,12 @@
 $(document).ready(function() {    
     $(function() {
         $("#tabs").tabs();
-        $("#textarea-container").resizable({ handles: 's', alsoResize: 'iframe' });
+        $("#textarea-container").resizable({
+        	handles: 's',
+        	alsoResize: 'iframe',
+        	minHeight: 220,
+        	maxHeight: 475
+        });
     });
 
     $("#executeButton").click(function(event) {
@@ -10,12 +15,23 @@ $(document).ready(function() {
 });
 
 function exec() {
+	$('#tabs').tabs('select', 1);
+	$('#output').html($('#running-html').html()).fadeIn();
     var script = editor.getCode();
     DWRGroovyService.eval(script, function(data) {
-        $('#output').html("");
+        $('#output').html("").fadeIn();
         $('#result').html("");
         $('#stacktrace').html("");
 
+        // display result
+        if (data[0] != "null") {
+            $("#tabs").tabs('select', 0);
+            $('#result').html(data[0]).fadeIn();
+        } else {
+            $('#result').fadeOut();
+        }
+
+        // display output
         if (data[1] != "") {
             $("#tabs").tabs('select', 1);
             $('#output').html(data[1]).fadeIn();
@@ -23,12 +39,7 @@ function exec() {
             $('#output').fadeOut();
         }
 
-        if (data[0] != "null") {
-            $("#tabs").tabs('select', 0);
-            $('#result').html(data[0]).fadeIn();
-        } else {
-            $('#result').fadeOut();
-        }
+        // display stacktrace
         if (data[2] != "") {
             $("#tabs").tabs('select', 2);
             $('#stacktrace').html(data[2]).fadeIn();
