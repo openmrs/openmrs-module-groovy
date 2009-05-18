@@ -15,9 +15,7 @@ public class GroovyScriptValidator implements Validator {
   public void validate(Object obj, Errors errors) {
     ValidationUtils.rejectIfEmpty(errors, "name", "error.null");
     ValidationUtils.rejectIfEmptyOrWhitespace(errors, "script", "error.null");
-    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "version", "error.null");
-
-
+    
     GroovyScript script = (GroovyScript) obj;
     if (script.getScript() != null) {
       try {
