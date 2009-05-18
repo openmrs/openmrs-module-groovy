@@ -52,8 +52,3 @@ function exec() {
         $('#executeButton').attr('disabled', false);
     });
 }
-
-function saveScript() {
-    $('#scriptForm').submit();
-}
-
