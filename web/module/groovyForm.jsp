@@ -1,6 +1,6 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
 
-<openmrs:require privilege="Groovy Scripting" otherwise="/login.htm" redirect="/module/groovy/groovy.form"/>
+<openmrs:require privilege="Run Groovy Scripts" otherwise="/login.htm" redirect="/module/groovy/groovy.form"/>
 
 <%@ include file="/WEB-INF/template/header.jsp" %>
 
