@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <openmrs:require privilege="Run Groovy Scripts" otherwise="/login.htm" redirect="/module/groovy/groovy.form"/>
 
@@ -31,16 +32,23 @@
 <p>
     <spring:message code="groovy.info"/><br/>
 </p>
+<form:form id="scriptForm" commandName="script">
+    <form:errors path="script" cssClass="error"/>
+    <div id="textarea-container" class="border">
+        <form:textarea path="script" cols="140" rows="40" id="groovyScript"/>
+    </div>
 
-<div id="textarea-container" class="border">
-    <textarea id="groovyScript" name="script" cols="140" rows="40">${script.script}</textarea>
-</div>
-<div id="button-bar">
-	<input id="executeButton" type="button" value="<spring:message code="groovy.execute"/>"/>&nbsp;
-	<a href="http://groovy.codehaus.org/Documentation" target="_groovy_doc"><spring:message
+    <div id="button-bar">
+	    <input id="executeButton" type="button" value="<spring:message code="groovy.execute"/>"/>&nbsp;&nbsp;        
+        <label for="name">Script Name:</label>
+        <form:input path="name" autocomplete="off" id="name"/>
+        <input type="submit" id="save" value="<spring:message code="groovy.save"/>"/>
+        <form:errors cssClass="error" path="name"/>
+        <br/>
+        <a href="http://groovy.codehaus.org/Documentation" target="_groovy_doc"><spring:message
         code="groovy.documentation-link"/></a>&nbsp;
-    <input type="text" value="${script.name}"/> <input type="submit" value="<spring:message code="groovy.save"/>"/>
-</div>
+    </div>    
+</form:form>
 <div id="tabs">
     <ul>
     	<li><a href="#tabs-result"><spring:message code="groovy.result-tab"/></a></li>
@@ -62,7 +70,7 @@
 </div>
 <div id="running-html" style="display:none"><h1><spring:message code="groovy.running"/></h1></div>
 <div id="noPrivileges" style="display:none"><h1><spring:message code="groovy.insufficentPrivileges"/></h1></div>
-<script language="javascript">
+<script language="javascript">                                                                                                                 
     var editor = CodeMirror.fromTextArea('groovyScript', {
         height: "300px",
         parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
@@ -75,6 +83,9 @@
         tabMode: "spaces",
         submitFunction: function() {
             $("#executeButton").click();
+        },
+        saveFunction:function() {
+            $("#scriptForm").submit();
         }
     });
 </script>

@@ -78,7 +78,7 @@ public class GroovyUtil {
 
   /**
    * This method mostly delegates to GroovyUtil#eval(String)
-   * @see GroovyUtil#evaluate(String)
+   * @see GroovyUtil#eval(String)
    */
   public static String[] evaluate(final String script) {
     final Object result

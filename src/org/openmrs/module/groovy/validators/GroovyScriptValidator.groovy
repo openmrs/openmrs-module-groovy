@@ -4,7 +4,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.openmrs.module.groovy.GroovyScript;
-import org.openmrs.module.groovy.GroovyUtil;
+import org.openmrs.module.groovy.GroovyUtil
 import org.codehaus.groovy.control.CompilationFailedException;
 
 public class GroovyScriptValidator implements Validator {

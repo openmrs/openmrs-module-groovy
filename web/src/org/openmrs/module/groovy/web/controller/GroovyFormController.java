@@ -59,7 +59,8 @@ public class GroovyFormController {
             return "/module/groovy/groovyForm";
         } else {
             GroovyUtil.getService().saveGroovyScript(script);
-            return "redirect:/module/groovy/groovyForm?id="+script.getId();
+            return "redirect:/module/groovy/groovy.form" +
+                    "?id="+script.getId();
         }
     }
 }

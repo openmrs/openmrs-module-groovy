@@ -56,9 +56,6 @@ public class GroovyModuleServiceImpl extends BaseOpenmrsService implements Groov
             script.setModified(now);
             script.setModifiedBy(Context.getAuthenticatedUser());
         }
-        for(GroovyScript s : getAllScripts()) {
-
-        }
         dao.saveGroovyScript(script);
         return script;
     }

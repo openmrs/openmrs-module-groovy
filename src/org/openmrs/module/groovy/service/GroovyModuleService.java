@@ -32,5 +32,5 @@ public interface GroovyModuleService extends OpenmrsService {
     GroovyScript saveGroovyScript(GroovyScript script);
 
     @Transactional
-    void deleteGroovyScript(GroovyScript script);
+    void deleteGroovyScript(GroovyScript script);    
 }
