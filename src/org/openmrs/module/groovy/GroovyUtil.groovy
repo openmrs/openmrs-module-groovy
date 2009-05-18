@@ -13,19 +13,13 @@
  */
 package org.openmrs.module.groovy
 
-import groovy.lang.Binding
-import groovy.lang.GroovyShell
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 import org.codehaus.groovy.control.CompilationFailedException
 import org.codehaus.groovy.control.MultipleCompilationErrorsException
+import org.openmrs.api.APIAuthenticationException
 import org.openmrs.api.context.Context
 import org.openmrs.module.groovy.service.GroovyModuleService
-
-import java.io.PrintWriter
-import java.io.StringWriter
-import java.io.Writer
-import org.openmrs.api.APIAuthenticationException
 
 public class GroovyUtil {
   private Log log = LogFactory.getLog(getClass())
@@ -37,6 +31,7 @@ public class GroovyUtil {
     return shell
   }
 
+  //TODO: add a better version of this which is driven by a config file.
   private static Binding setBindings() {
     final Binding binding = new Binding()
     out = new StringWriter()
@@ -67,15 +62,22 @@ public class GroovyUtil {
       out.getBuffer().delete(0, out.getBuffer().length() - 1)
   }
 
+  /**
+   * Delegate method that does the actual parsing of the script.
+   * @see GroovyUtil#evaluate(String)
+   */
   static Object eval(final String script) throws CompilationFailedException {
-    // this should never be reached; it is a safety net.
-    if (!Context.hasPrivilege("Run Groovy Scripts")) {
-      throw new APIAuthenticationException("Must have \"Run Groovy Scripts\" Privileges");
+    if(!Context.hasPrivilege("Run Groovy Scripts")) {
+      throw new APIAuthenticationException("You do not have sufficient privileges to run Groovy Scripts");
     }
     return getShell().parse(script).run()
   }
 
 
+  /**
+   * This method mostly delegates to GroovyUtil#eval(String)
+   * @see GroovyUtil#evaluate(String)
+   */
   public static String[] evaluate(final String script) {
     final Object result
     StringWriter stacktrace = new StringWriter()
@@ -118,6 +120,7 @@ public class GroovyUtil {
    * permission to use this as I wished.
    */
   static def sanitizeStacktrace(final def t) {
+    //TODO: add a better version driven by a configuration page
     final def filtered = [
             'org.apache.', 'org.mortbay.',
             'java.', 'javax.', 'sun.',
