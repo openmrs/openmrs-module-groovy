@@ -44,7 +44,7 @@
         </table>
     </c:when>
     <c:otherwise>
-        <h1 style="color:#778;border:1px dashed #000"><spring:message code="groovy.list.noscripts"/></a></h1>
+        <h1 style="color:#fff;border:1px dashed #000"><spring:message code="groovy.list.noscripts"/></a></h1>
     </c:otherwise>
 </c:choose>
 <%@ include file="/WEB-INF/template/footer.jsp" %>
