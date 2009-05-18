@@ -7,8 +7,8 @@
     <id>groovy</id>
     <name>Groovy</name>
     <version>2.0</version>
-    <!-- 1.3 Groovy 1.6.1, added line numbers, syntax highlighting, made the text area bigger,
-              minor refactoring -->
+    <!-- 2.0 Groovy 1.6.3, added line numbers; syntax highlighting; made the text area bigger,
+              minor refactoring; save/loading for scripts -->
     <!-- 1.2 Groovy 1.5.4, added patientSet, displays "Running..." while running -->
     <!-- 1.1 filled out services -->
     <!-- 1.0 initial version -->
@@ -47,7 +47,7 @@
 
     <!-- Required Privileges -->
     <privilege>
-        <name>Groovy Scripting</name>
+        <name>Run Groovy Scripts</name>
         <description>Allows user to execute Groovy scripts</description>
     </privilege>
     <!-- /Required Privileges -->
