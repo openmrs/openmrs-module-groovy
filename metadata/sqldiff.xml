@@ -37,6 +37,18 @@
 			  CONSTRAINT `User who changed this script` FOREIGN KEY (`changed_by`) REFERENCES `users` (`user_id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		</sql>
+-	</diff>
+    	<diff>
+		<version>1.0.2</version>
+		<author>Robert O'Connor</author>
+		<date>18 May 2009</date>
+		<description>
+			 Remove the version property
+		</description>
+		<sql>
+		     alter table `groovy_scripts`
+             drop column `version`;
+	    </sql>
 	</diff>
 	
 </sqldiff>

@@ -12,8 +12,7 @@
             <tbody>
 
             <tr>
-                <td>Name</td>
-                <td>Version</td>
+                <td>Name</td>                
                 <td>Creator</td>
                 <td>Date Created</td>
                 <td>Last Modified By</td>
@@ -27,7 +26,6 @@
                         <td>
                             <a href="groovy.form?id=${script.id}">${script.name}</a>
                         </td>
-                        <td>${script.version}</td>
                         <td>${script.creator}</td>
                         <td>${script.created}</td>
                         <td>${script.modifiedBy}</td>

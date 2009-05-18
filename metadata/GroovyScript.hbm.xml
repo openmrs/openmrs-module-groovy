@@ -11,8 +11,6 @@
 			<generator class="native" />
 		</id>
 
-        <property name="version" type="java.lang.String" column="version" not-null="true" length="65535"/>
-
         <property name="name" type="java.lang.String" column="name" not-null="true" length="100" />
 
 		<property name="script" type="java.lang.String" column="script" length="65535" not-null="true"/>
