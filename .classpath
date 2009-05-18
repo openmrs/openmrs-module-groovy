@@ -21,6 +21,7 @@
     <classpathentry kind="lib" path="lib/ant-1.7.0.jar" />
     <classpathentry kind="lib" path="lib/ant-launcher.jar" />
     <classpathentry kind="lib" path="lib-common/mail.jar" />
+    <classpathentry kind="lib" path="lib/groovy-all-1.6.3.jar" />
     <classpathentry kind="output" path="build" />
 </classpath>
 
