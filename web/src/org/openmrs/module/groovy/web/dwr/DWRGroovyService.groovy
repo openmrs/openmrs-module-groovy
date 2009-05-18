@@ -19,9 +19,10 @@ import org.openmrs.api.context.Context;
 class DWRGroovyService {
 
   String[] eval(String script) {     
-    if(Context.hasPrivilege("Groovy Scripting")) {
+    if(Context.hasPrivilege("Run Groovy Scripts")) {
       return GroovyUtil.evaluate(script)
     }
-    return ["<h1>You do not have the permission to execute scripts.</h1>","",""] as String[];
+    def ret = "groovy.insufficentPrivileges"
+    return ["<h1>${ret}</h1>","",""] as String[];
   }
 }
