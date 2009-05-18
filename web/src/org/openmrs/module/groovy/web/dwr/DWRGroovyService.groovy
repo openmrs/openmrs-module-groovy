@@ -14,7 +14,8 @@
 package org.openmrs.module.groovy.web.dwr
 
 import org.openmrs.module.groovy.GroovyUtil
-import org.openmrs.api.context.Context;
+import org.openmrs.api.context.Context
+import org.openmrs.annotation.Authorized;
 
 class DWRGroovyService {
 
@@ -22,7 +23,6 @@ class DWRGroovyService {
     if(Context.hasPrivilege("Run Groovy Scripts")) {
       return GroovyUtil.evaluate(script)
     }
-    def ret = "groovy.insufficentPrivileges"
-    return ["<h1>${ret}</h1>","",""] as String[];
+    return ["Insufficient Privileges","",""] as String[];
   }
 }

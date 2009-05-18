@@ -61,6 +61,7 @@
     </div>
 </div>
 <div id="running-html" style="display:none"><h1><spring:message code="groovy.running"/></h1></div>
+<div id="noPrivileges" style="display:none"><h1><spring:message code="groovy.insufficentPrivileges"/></h1></div>
 <script language="javascript">
     var editor = CodeMirror.fromTextArea('groovyScript', {
         height: "300px",
