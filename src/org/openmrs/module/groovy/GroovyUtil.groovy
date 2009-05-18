@@ -25,6 +25,7 @@ import org.openmrs.module.groovy.service.GroovyModuleService
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.io.Writer
+import org.openmrs.api.APIAuthenticationException
 
 public class GroovyUtil {
   private Log log = LogFactory.getLog(getClass())
@@ -67,8 +68,13 @@ public class GroovyUtil {
   }
 
   static Object eval(final String script) throws CompilationFailedException {
+    // this should never be reached; it is a safety net.
+    if (!Context.hasPrivilege("Run Groovy Scripts")) {
+      throw new APIAuthenticationException("Must have \"Run Groovy Scripts\" Privileges");
+    }
     return getShell().parse(script).run()
   }
+
 
   public static String[] evaluate(final String script) {
     final Object result
@@ -96,7 +102,7 @@ public class GroovyUtil {
     final String output = getBuffer()
     final String res = result ? result.toString() : "null"
     final String trace = stacktrace ? stacktrace.toString() : ""
-    final def ret = [res,output,trace] as String[]    
+    final def ret = [res, output, trace] as String[]
     return ret
   }
 
@@ -116,7 +122,7 @@ public class GroovyUtil {
             'org.apache.', 'org.mortbay.',
             'java.', 'javax.', 'sun.',
             'groovy.', 'org.codehaus.groovy.',
-            'org.springframework.','org.directwebremoting.',
+            'org.springframework.', 'org.directwebremoting.',
             'org.openmrs.'
     ]
     final def trace = t.getStackTrace()
