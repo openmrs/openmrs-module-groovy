@@ -42,8 +42,11 @@
 	    <input id="executeButton" type="button" value="<spring:message code="groovy.execute"/>"/>&nbsp;&nbsp;        
         <label for="name">Script Name:</label>
         <form:input path="name" autocomplete="off" id="name"/>
-        <input type="submit" id="save" value="<spring:message code="groovy.save"/>"/>
         <form:errors cssClass="error" path="name"/>
+        <label for="version">Version:</label>
+        <form:input path="version" id="version"/>
+        <form:errors cssClass="error" path="version"/>
+        <input type="submit" id="save" value="<spring:message code="groovy.save"/>"/>
         <br/>
         <a href="http://groovy.codehaus.org/Documentation" target="_groovy_doc"><spring:message
         code="groovy.documentation-link"/></a>&nbsp;

@@ -51,7 +51,6 @@ public class GroovyFormController {
         model.addAttribute("script", script);
         return "/module/groovy/groovyForm";
     }
-
     @RequestMapping(method = RequestMethod.POST)
         public String processSubmit(@ModelAttribute("script") GroovyScript script, BindingResult result, SessionStatus status) {
         new GroovyScriptValidator().validate(script, result);
@@ -59,7 +58,7 @@ public class GroovyFormController {
             return "/module/groovy/groovyForm";
         } else {
             GroovyUtil.getService().saveGroovyScript(script);
-            return "redirect:/module/groovy/groovy.form" +
+            return "redirect:/module/groovy/groovy.form"+
                     "?id="+script.getId();
         }
     }

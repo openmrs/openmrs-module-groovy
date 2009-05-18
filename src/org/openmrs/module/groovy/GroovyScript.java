@@ -6,6 +6,7 @@ import org.openmrs.User;
 
 public class GroovyScript {
     Integer id;
+    String version;
     String name;
     String script;
     Date created;
@@ -72,6 +73,14 @@ public class GroovyScript {
         this.modifiedBy = modifiedBy;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     @Override
     public int hashCode() {
         if (this.getId() == null)
@@ -94,6 +103,7 @@ public class GroovyScript {
     public String toString() {
         return "GroovyScript{" +
                 "id=" + id +
+                ", version=" + version +
                 ", name='" + name + '\'' +
                 ", script='" + script + '\'' +
                 ", created=" + created +

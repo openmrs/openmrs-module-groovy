@@ -43,8 +43,6 @@ public class GroovyModuleDAOImpl implements GroovyModuleDAO {
     @Override
     public GroovyScript saveGroovyScript(GroovyScript script) {
         sessionFactory.getCurrentSession().saveOrUpdate(script);
-        System.out.println(script.getModifiedBy());
-        System.out.println(script.getModified());
         return script;
     }
 

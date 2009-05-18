@@ -48,8 +48,14 @@
     <!-- Required Privileges -->
     <privilege>
         <name>Run Groovy Scripts</name>
-        <description>Allows user to execute Groovy scripts</description>
+        <description>Allows user to execute Groovy scripts.</description>
     </privilege>
+
+    <privilege>
+        <name>List Groovy Scripts</name>
+        <description>Allows user to view Groovy scripts which are saved.</description>
+    </privilege>
+
     <!-- /Required Privileges -->
 
 

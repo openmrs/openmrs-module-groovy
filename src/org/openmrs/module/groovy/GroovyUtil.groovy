@@ -21,7 +21,7 @@ import org.openmrs.api.APIAuthenticationException
 import org.openmrs.api.context.Context
 import org.openmrs.module.groovy.service.GroovyModuleService
 
-public class GroovyUtil {
+class GroovyUtil {
   private Log log = LogFactory.getLog(getClass())
   private static StringWriter out
 
@@ -53,11 +53,11 @@ public class GroovyUtil {
     return binding
   }
 
-  public static String getBuffer() {
+ static String getBuffer() {
     return out ? out.toString() : ""
   }
 
-  public static void clearBuffer() {
+ static void clearBuffer() {
     if (out != null && out.getBuffer() != null && out.getBuffer().length() > 0)
       out.getBuffer().delete(0, out.getBuffer().length() - 1)
   }
@@ -80,7 +80,7 @@ public class GroovyUtil {
    * This method mostly delegates to GroovyUtil#eval(String)
    * @see GroovyUtil#eval(String)
    */
-  public static String[] evaluate(final String script) {
+  static String[] evaluate(final String script) {
     final Object result
     StringWriter stacktrace = new StringWriter()
     PrintWriter errWriter = new PrintWriter(stacktrace)

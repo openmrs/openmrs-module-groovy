@@ -14,7 +14,7 @@
 	</help>
 	
 	<diff>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<author>Robert O'Connor</author>
 		<date>25 April 2009</date>
 		<description>
@@ -23,7 +23,8 @@
 		<sql>
 		   CREATE TABLE IF NOT EXISTS `groovy_scripts` (
 			  `id` int(32) NOT NULL auto_increment,
-			  `name` varchar(100) NOT NULL,
+			  `version` mediumtext NOT NULL,
+              `name` varchar(100) NOT NULL,
 			  `script` mediumtext NOT NULL,
 			  `creator` int(11) NOT NULL default '0',
 			  `date_created` datetime NOT NULL default '0000-00-00 00:00:00',

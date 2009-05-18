@@ -22,7 +22,7 @@ h1 {
 #textarea-container {
 	background-position: 100% bottom;
 	background-repeat: no-repeat;
-	background-image: url('../images/logo.png');	
+	background-image: url('../images/logo.png');
 	margin-bottom: 10px;
 }
 
@@ -51,4 +51,20 @@ h1 {
 .ui-tabs .ui-tabs-nav li a {
 	padding: 2px 4px 2px 4px;
 	font-size: smaller;
+}
+
+table {
+    background-color: #8FABC7;
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+}
+
+tr {
+	border: 1px solid #000;
+}
+
+a {
+    color: #fff;
+    font-weight: bold;
 }
