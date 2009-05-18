@@ -18,7 +18,6 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.groovy.service.GroovyModuleService;
 import org.openmrs.module.groovy.GroovyScript;
 import org.openmrs.module.groovy.db.hibernate.GroovyModuleDAO;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Date;
