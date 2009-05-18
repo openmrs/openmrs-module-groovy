@@ -46,7 +46,7 @@ public class GroovyFormController {
 
 
     @RequestMapping(method = RequestMethod.GET )    
-    public String setupForm(@RequestParam(value="id",required=false) Integer id, ModelMap model, HttpServletRequest request) {
+    public String setupForm(@RequestParam(value="id",required=false) Integer id, ModelMap model, final HttpServletRequest request) {
         GroovyScript script = id != null ? Context.getService(GroovyModuleService.class).getScriptById(id) : new GroovyScript();
         model.addAttribute("script", script);
         return "/module/groovy/groovyForm";
