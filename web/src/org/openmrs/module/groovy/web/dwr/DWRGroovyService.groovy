@@ -19,9 +19,9 @@ import org.openmrs.api.context.Context;
 class DWRGroovyService {
 
   String[] eval(String script) {     
-    if(Context.authenticated && Context.hasPrivilege("Groovy Scripting")) {
+    if(Context.isAuthenticated() && Context.hasPrivilege("Groovy Scripting")) {
       return GroovyUtil.evaluate(script)
     }
-    return ["","",""] as String[];
+    return ["<h1>You do not have the permission to execute scripts.</h1>","",""] as String[];
   }
 }
