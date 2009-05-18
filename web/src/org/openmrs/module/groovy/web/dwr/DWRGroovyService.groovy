@@ -13,9 +13,8 @@
  */
 package org.openmrs.module.groovy.web.dwr
 
-import org.openmrs.module.groovy.GroovyUtil
 import org.openmrs.api.context.Context
-import org.openmrs.annotation.Authorized;
+import org.openmrs.module.groovy.GroovyUtil
 
 class DWRGroovyService {
 
