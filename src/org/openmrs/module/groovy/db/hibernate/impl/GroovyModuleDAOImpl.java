@@ -28,25 +28,25 @@ public class GroovyModuleDAOImpl implements GroovyModuleDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
+    
     public List<GroovyScript> getAllScripts() {
         Criteria crit = sessionFactory.getCurrentSession().createCriteria(GroovyScript.class);
         crit.addOrder(Order.asc("name"));        
         return (List<GroovyScript>)crit.list();
     }
 
-    @Override
+    
     public GroovyScript getScriptById(Integer id) {
         return (GroovyScript) sessionFactory.getCurrentSession().get(GroovyScript.class, id);
     }
 
-    @Override
+    
     public GroovyScript saveGroovyScript(GroovyScript script) {
         sessionFactory.getCurrentSession().saveOrUpdate(script);
         return script;
     }
 
-    @Override
+    
     public void deleteGroovyScript(GroovyScript script) {
         sessionFactory.getCurrentSession().delete(script);
     }

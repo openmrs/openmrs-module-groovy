@@ -31,22 +31,22 @@ public class GroovyModuleServiceImpl extends BaseOpenmrsService implements Groov
         this.dao = dao;
     }
 
-    @Override
+    
     public List<GroovyScript> getAllScripts() {
         return dao.getAllScripts();
     }
 
-    @Override
+    
     public GroovyScript getScriptById(Integer id) {
         return dao.getScriptById(id);
     }
 
-    @Override
+    
     public void deleteGroovyScript(GroovyScript script) {
         dao.deleteGroovyScript(script);
     }
 
-    @Override
+    
     public GroovyScript saveGroovyScript(GroovyScript script) {
         Date now = new Date();
         script.setCreated(now);
