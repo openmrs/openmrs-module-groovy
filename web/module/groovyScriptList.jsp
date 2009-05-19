@@ -21,7 +21,7 @@
 
             </tr>
             <c:forEach var="script" items="${scripts}" varStatus="status">
-                <form method="post" action="groovy.delete">
+                <form method="post">
                     <tr>
                         <td>
                             <a href="groovy.form?id=${script.id}">${script.name}</a>
