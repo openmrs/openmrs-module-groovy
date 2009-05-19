@@ -23,7 +23,6 @@
 		<sql>
 		   CREATE TABLE IF NOT EXISTS `groovy_scripts` (
 			  `id` int(32) NOT NULL auto_increment,
-			  `version` mediumtext NOT NULL,
               `name` varchar(100) NOT NULL,
 			  `script` mediumtext NOT NULL,
 			  `creator` int(11) NOT NULL default '0',
@@ -38,17 +37,5 @@
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		</sql>
 -	</diff>
-    	<diff>
-		<version>1.0.2</version>
-		<author>Robert O'Connor</author>
-		<date>18 May 2009</date>
-		<description>
-			 Remove the version property
-		</description>
-		<sql>
-		     alter table `groovy_scripts`
-             drop column `version`;
-	    </sql>
-	</diff>
 	
 </sqldiff>
