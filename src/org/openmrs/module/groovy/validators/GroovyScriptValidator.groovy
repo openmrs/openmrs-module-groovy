@@ -13,13 +13,14 @@ public class GroovyScriptValidator implements Validator {
   }
 
   public void validate(Object obj, Errors errors) {
-    ValidationUtils.rejectIfEmpty(errors, "name", "error.null");
-    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "script", "error.null");
+    ValidationUtils.rejectIfEmpty(errors, "name", "groovy.name.error");
+    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "script", "groovy.script.error");
     
     GroovyScript script = (GroovyScript) obj;
     if (script.getScript() != null) {
       try {
-        Object o = GroovyUtil.eval(script.getScript());
+        // we don't care about the return value; just whether an exception occured or not.
+        GroovyUtil.eval(script.getScript());
       } catch (CompilationFailedException ex) {
         errors.rejectValue("script", null, ex.getMessage());
       }
