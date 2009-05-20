@@ -665,6 +665,10 @@ var Editor = (function(){
           this.options.newFunction();
           event.stop();
         }
+        else if(code == 79 && this.options.openFunction) { // alt-O
+          this.options.openFunction();
+          event.stop();
+        }
       }
     },
 
