@@ -661,6 +661,10 @@ var Editor = (function(){
           this.options.submitFunction();
           event.stop();
         }
+        else if(code == 78 && this.options.newFunction) { // alt-N
+          this.options.newFunction();
+          event.stop();
+        }
       }
     },
 
