@@ -18,6 +18,7 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.groovy.service.GroovyModuleService;
 import org.openmrs.module.groovy.GroovyScript;
 import org.openmrs.module.groovy.db.hibernate.GroovyModuleDAO;
+import org.openmrs.User;
 
 import java.util.List;
 import java.util.Date;
@@ -27,7 +28,7 @@ public class GroovyModuleServiceImpl extends BaseOpenmrsService implements Groov
 
     GroovyModuleDAO dao;
 
-    public void setDao(GroovyModuleDAO dao) {
+    public void setDao(final GroovyModuleDAO dao) {
         this.dao = dao;
     }
 
@@ -37,23 +38,25 @@ public class GroovyModuleServiceImpl extends BaseOpenmrsService implements Groov
     }
 
     
-    public GroovyScript getScriptById(Integer id) {
+    public GroovyScript getScriptById(final Integer id) {
         return dao.getScriptById(id);
     }
 
     
-    public void deleteGroovyScript(GroovyScript script) {
+    public void deleteGroovyScript(final GroovyScript script) {
         dao.deleteGroovyScript(script);
     }
 
     
-    public GroovyScript saveGroovyScript(GroovyScript script) {
-        Date now = new Date();
+    public GroovyScript saveGroovyScript(final GroovyScript script) {
+        final Date now = new Date();
         script.setCreated(now);
-        script.setCreator(Context.getAuthenticatedUser());
+        final User authenticatedUser = Context.getAuthenticatedUser();
+        script.setCreator(authenticatedUser);
         if (script.getId() != null) {
             script.setModified(now);
-            script.setModifiedBy(Context.getAuthenticatedUser());
+            final User modifiedBy = Context.getAuthenticatedUser();
+            script.setModifiedBy(modifiedBy);
         }
         dao.saveGroovyScript(script);
         return script;
