@@ -11,29 +11,26 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.groovy.web.controller;
+package org.openmrs.module.groovy.web.controller
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import javax.servlet.http.HttpServletRequest
+import org.apache.commons.logging.Log
+import org.apache.commons.logging.LogFactory
+import org.openmrs.api.context.Context
+import org.openmrs.module.groovy.GroovyScript
+import org.openmrs.module.groovy.GroovyUtil
+import org.openmrs.module.groovy.service.GroovyModuleService
+import org.openmrs.module.groovy.validators.GroovyScriptValidator
+import org.springframework.stereotype.Controller
+import org.springframework.ui.ModelMap
+import org.springframework.validation.BindingResult
+import org.springframework.web.bind.ServletRequestBindingException
+import org.springframework.web.bind.ServletRequestUtils
+import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.bind.RequestUtils;
-import org.springframework.web.bind.ServletRequestBindingException;
-import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.validation.BindingResult;
-import org.openmrs.module.groovy.GroovyScript;
-import org.openmrs.module.groovy.GroovyUtil;
-import org.openmrs.module.groovy.validators.GroovyScriptValidator;
-import org.openmrs.module.groovy.service.GroovyModuleService;
-import org.openmrs.api.context.Context;
-
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * This controller backs and saves the Groovy module settings
@@ -67,8 +64,7 @@ public class GroovyFormController {
             GroovyUtil.getService().saveGroovyScript(script);
 
         }
-        return "redirect:/module/groovy/groovy.form" +
-                "?id=" + script.getId();
+        return "redirect:/module/groovy/groovy.form?id=${script.id}"; 
     }
 }
 
