@@ -1,3 +1,16 @@
+/**
+ * The contents of this file are subject to the OpenMRS Public License
+ * Version 1.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at
+ * http://license.openmrs.org
+ *
+ * Software distributed under the License is distributed on an "AS IS"
+ * basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+ * License for the specific language governing rights and limitations
+ * under the License.
+ *
+ * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+ */
 package org.openmrs.module.groovy;
 
 import java.util.Date;
@@ -28,7 +41,7 @@ public class GroovyScript {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -36,7 +49,7 @@ public class GroovyScript {
         return script;
     }
 
-    public void setScript(String script) {
+    public void setScript(final String script) {
         this.script = script;
     }
 
@@ -44,7 +57,7 @@ public class GroovyScript {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(final Date created) {
         this.created = created;
     }
 
@@ -52,7 +65,7 @@ public class GroovyScript {
         return modified;
     }
 
-    public void setModified(Date modified) {
+    public void setModified(final Date modified) {
         this.modified = modified;
     }
 
@@ -60,7 +73,7 @@ public class GroovyScript {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(final User creator) {
         this.creator = creator;
     }
 
@@ -68,7 +81,7 @@ public class GroovyScript {
         return modifiedBy;
     }
 
-    public void setModifiedBy(User modifiedBy) {
+    public void setModifiedBy(final User modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
 
@@ -82,7 +95,7 @@ public class GroovyScript {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj instanceof GroovyScript) {
             GroovyScript s = (GroovyScript) obj;
             return (this.getId().equals(s.getId()));

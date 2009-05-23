@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.bind.RequestUtils;
+import org.springframework.web.bind.ServletRequestBindingException;
+import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.validation.BindingResult;
 import org.openmrs.module.groovy.GroovyScript;
 import org.openmrs.module.groovy.GroovyUtil;
@@ -51,16 +54,21 @@ public class GroovyFormController {
         model.addAttribute("script", script);
         return "/module/groovy/groovyForm";
     }
+
     @RequestMapping(method = RequestMethod.POST)
-        public String processSubmit(@ModelAttribute("script") GroovyScript script, BindingResult result, SessionStatus status) {
+    public String processSubmit(@ModelAttribute("script") GroovyScript script, BindingResult result, SessionStatus status, HttpServletRequest request) throws ServletRequestBindingException {
         new GroovyScriptValidator().validate(script, result);
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "/module/groovy/groovyForm";
+        } else if (ServletRequestUtils.getStringParameter(request, "saveAsNew")) {
+            script.setId(null);
+            GroovyUtil.getService().saveGroovyScript(script);
         } else {
             GroovyUtil.getService().saveGroovyScript(script);
-            return "redirect:/module/groovy/groovy.form"+
-                    "?id="+script.getId();
+
         }
+        return "redirect:/module/groovy/groovy.form" +
+                "?id=" + script.getId();
     }
 }
 
