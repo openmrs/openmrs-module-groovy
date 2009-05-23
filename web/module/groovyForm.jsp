@@ -1,10 +1,22 @@
+<%--
+  The contents of this file are subject to the OpenMRS Public License
+  Version 1.0 (the "License"); you may not use this file except in
+  compliance with the License. You may obtain a copy of the License at
+  http://license.openmrs.org
+
+  Software distributed under the License is distributed on an "AS IS"
+  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  License for the specific language governing rights and limitations
+  under the License.
+
+  Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+
+--%>
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <openmrs:require privilege="Run Groovy Scripts" otherwise="/login.htm" redirect="/module/groovy/groovy.form"/>
 
 <%@ include file="/WEB-INF/template/header.jsp" %>
-
 <openmrs:htmlInclude file="/dwr/interface/DWRGroovyService.js"/>
 <openmrs:htmlInclude file="/dwr/engine.js"/>
 <openmrs:htmlInclude file="/dwr/util.js"/>
@@ -27,29 +39,38 @@
 
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/moduleResources/groovy/js/main.js"></script>
-
+<p>
+    <a href="groovy.list"><spring:message code="groovy.manage"/></a> |
+    <a href="groovy.form"><spring:message code="groovy.new"/></a>
+</p>
 
 <p>
     <spring:message code="groovy.info"/><br/>
+    <br/>
+    <spring:message code="groovy.info2"/><br/>
 </p>
-<p></p>
-<form:form id="scriptForm" commandName="script">
-    <form:errors path="script" cssClass="error"/>
+<form:form id="scriptForm" commandName="script" name="scriptForm" onsubmit="$('#dialog').appendTo('form[@name=scriptForm]');">
+    <form:errors path="*" cssClass="error"/>
+    <c:if test="${ fn:length(script.name) > 0}">
+        <span id="header"><h1 align="center">${script.name}</h1></span></h1>
+    </c:if>
     <div id="textarea-container" class="border">
         <form:textarea path="script" cols="140" rows="40" id="groovyScript"/>
     </div>
+    <label for="name">Script Name:</label>
+    <input id="name" name="name" value="${script.name}"/>
+    <%-- this is request specific --%>
+    <spring:message code="groovy.saveAsNew"/> <input type="checkbox" name="saveAsNew" value="yes"/>
 
     <div id="button-bar">
-	    <input id="executeButton" type="button" value="<spring:message code="groovy.execute"/>"/>&nbsp;&nbsp;        
-        <label for="name">Script Name:</label>
-        <form:input path="name" autocomplete="off" id="name"/>
-        <form:errors cssClass="error" path="name"/>
-        <input type="submit" id="save" value="<spring:message code="groovy.save"/>"/>
+	    <input id="executeButton" type="button" value="<spring:message code="groovy.execute"/>"/>&nbsp;
+        <input type="submit" value="<spring:message code="groovy.save"/>"/>
         <br/>
         <a href="http://groovy.codehaus.org/Documentation" target="_groovy_doc"><spring:message
         code="groovy.documentation-link"/></a>&nbsp;
     </div>    
 </form:form>
+
 <div id="tabs">
     <ul>
     	<li><a href="#tabs-result"><spring:message code="groovy.result-tab"/></a></li>
@@ -63,14 +84,14 @@
 
     <div id="tabs-output">
         <pre id="output" class="border hidden"></pre>
-    </div>
+    </div>                                                                              
+    
 
     <div id="tabs-stacktrace">
         <pre id="stacktrace" class="border hidden"></pre>
-    </div>
-</div>
-<div id="running-html" style="display:none"><h1><spring:message code="groovy.running"/></h1></div>
-<div id="noPrivileges" style="display:none"><h1><spring:message code="groovy.insufficentPrivileges"/></h1></div>
+    </div>                                      </div>
+<div id="running-html" class="hidden"><h1><spring:message code="groovy.running"/></h1></div>
+<div id="noPrivileges" class="hidden"><h1><spring:message code="groovy.insufficentPrivileges"/></h1></div>
 <script language="javascript">                                                                                                                 
     var editor = CodeMirror.fromTextArea('groovyScript', {
         height: "300px",
@@ -86,7 +107,7 @@
             $("#executeButton").click();
         },
         saveFunction:function() {
-            $("#scriptForm").submit();
+            document.forms["scriptForm"].submit();
         }
     });
 </script>
