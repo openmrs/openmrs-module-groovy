@@ -58,7 +58,7 @@
         <form:textarea path="script" cols="140" rows="40" id="groovyScript"/>
     </div>
     <label for="name">Script Name:</label>
-    <input id="name" name="name" value="${script.name}"/>
+    <form:input path="name" id="name"/>    
     <%-- this is request specific --%>
     <spring:message code="groovy.saveAsNew"/> <input type="checkbox" name="saveAsNew" value="yes"/>
 
