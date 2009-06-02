@@ -67,7 +67,3 @@ public class GroovyFormController {
         return "redirect:/module/groovy/groovy.form?id=${script.id}"; 
     }
 }
-
-
-
-
