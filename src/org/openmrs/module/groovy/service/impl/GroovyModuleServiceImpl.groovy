@@ -55,7 +55,7 @@ public class GroovyModuleServiceImpl extends BaseOpenmrsService implements Groov
         final User authenticatedUser = Context.getAuthenticatedUser();
         if(!script.creator)
           script.setCreator(authenticatedUser);
-        if (!script.id) {
+        if (script.id) {
             script.setModified(now);
             final User modifiedBy = Context.getAuthenticatedUser();
             script.setModifiedBy(modifiedBy);
