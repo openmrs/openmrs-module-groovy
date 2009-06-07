@@ -26,41 +26,44 @@ import java.util.Date;
 
 public class GroovyModuleServiceImpl extends BaseOpenmrsService implements GroovyModuleService {
 
-    GroovyModuleDAO dao;
+  GroovyModuleDAO dao;
 
-    public void setDao(final GroovyModuleDAO dao) {
-        this.dao = dao;
-    }
+  public void setDao(final GroovyModuleDAO dao) {
+    this.dao = dao;
+  }
 
-    
-    public List<GroovyScript> getAllScripts() {
-        return dao.getAllScripts();
-    }
 
-    
-    public GroovyScript getScriptById(final Integer id) {
-        return dao.getScriptById(id);
-    }
+  public List<GroovyScript> getAllScripts() {
+    return dao.getAllScripts();
+  }
 
-    
-    public void deleteGroovyScript(final GroovyScript script) {
-        dao.deleteGroovyScript(script);
-    }
 
-    
-    public GroovyScript saveGroovyScript(final GroovyScript script) {
-        final Date now = new Date();
-        if(!script.created)
-          script.setCreated(now);
-        final User authenticatedUser = Context.getAuthenticatedUser();
-        if(!script.creator)
-          script.setCreator(authenticatedUser);
-        if (script.id) {
-            script.setModified(now);
-            final User modifiedBy = Context.getAuthenticatedUser();
-            script.setModifiedBy(modifiedBy);
-        }
-        dao.saveGroovyScript(script);
-        return script;
+  public GroovyScript getScriptById(final Integer id) {
+    return dao.getScriptById(id);
+  }
+
+
+  public void deleteGroovyScript(final GroovyScript script) {
+    dao.deleteGroovyScript(script);
+  }
+
+
+  public GroovyScript saveGroovyScript(final GroovyScript script) {
+    // let's prevent a lovely NPE from occuring. 
+    if (!script)
+      throw new IllegalArgumentException("script cannot be null");
+    final Date now = new Date();
+    if (!script.created)
+      script.setCreated(now);
+    final User authenticatedUser = Context.getAuthenticatedUser();
+    if (!script.creator)
+      script.setCreator(authenticatedUser);
+    if (script.id) {
+      script.setModified(now);
+      final User modifiedBy = Context.getAuthenticatedUser();
+      script.setModifiedBy(modifiedBy);
     }
+    dao.saveGroovyScript(script);
+    return script;
+  }
 }
