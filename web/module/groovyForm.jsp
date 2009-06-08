@@ -49,7 +49,7 @@
     <br/>
     <spring:message code="groovy.info2"/><br/>
 </p>
-<form:form id="scriptForm" commandName="script" name="scriptForm" onsubmit="$('#dialog').appendTo('form[@name=scriptForm]');">
+<form:form id="scriptForm" commandName="script" name="scriptForm">
     <form:errors path="*" cssClass="error"/>
     <c:if test="${ fn:length(script.name) > 0}">
         <span id="header"><h1 align="center">${script.name}</h1></span></h1>
@@ -92,7 +92,7 @@
     </div>                                      </div>
 <div id="running-html" class="hidden"><h1><spring:message code="groovy.running"/></h1></div>
 <div id="noPrivileges" class="hidden"><h1><spring:message code="groovy.insufficentPrivileges"/></h1></div>
-<script language="javascript">                                                                                                                 
+<script language="javascript">                                                                                                                    
     var editor = CodeMirror.fromTextArea('groovyScript', {
         height: "300px",
         parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
