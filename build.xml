@@ -98,14 +98,14 @@
 
         <!-- Create distributable jar file -->
         <jar destfile="dist/${module.id}-${module.version}.omod">
-            <fileset dir="build" includes="**/*"/>
+           <fileset dir="build" includes="**/*" excludes="**/*Test*"/>
         </jar>
     </target>
 
     <target name="deploy-web" depends="package-module">
         <property environment="env"/>
         <copy todir="${env.CATALINA_HOME}/webapps/openmrs/WEB-INF/view/module/${module.id}">
-            <fileset dir="web/module" includes="**/*"/>
+            <fileset dir="web/module"/>
         </copy>
     </target>
 
