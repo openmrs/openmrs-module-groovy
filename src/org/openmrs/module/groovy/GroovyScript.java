@@ -86,33 +86,32 @@ public class GroovyScript {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        GroovyScript that = (GroovyScript) o;
+
+        if (!created.equals(that.created)) return false;
+        if (!creator.equals(that.creator)) return false;
+        if (!id.equals(that.id)) return false;
+        if (!modified.equals(that.modified)) return false;
+        if (!modifiedBy.equals(that.modifiedBy)) return false;
+        if (!name.equals(that.name)) return false;
+        if (!script.equals(that.script)) return false;
+
+        return true;
+    }
+
+    @Override
     public int hashCode() {
-        if (this.getId() == null)
-            return super.hashCode();
-        int hash = 8;
-        hash = 31 * this.getId() + hash;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj instanceof GroovyScript) {
-            GroovyScript s = (GroovyScript) obj;
-            return (this.getId().equals(s.getId()));
-        }
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return "GroovyScript{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", script='" + script + '\'' +
-                ", created=" + created +
-                ", modified=" + modified +
-                ", creator=" + creator +
-                ", modifiedBy=" + modifiedBy +
-                '}';
+        int result = 7;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + script.hashCode();
+        result = 31 * result + created.hashCode();
+        result = 31 * result + modified.hashCode();
+        result = 31 * result + creator.hashCode();
+        result = 31 * result + modifiedBy.hashCode();
+        return result;
     }
 }
