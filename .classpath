@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-    <classpathentry kind="src" path="metadata" />
-    <classpathentry kind="src" path="src" />
-    <classpathentry kind="src" path="test" />
-    <classpathentry kind="src" path="web/src" />
-    <classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/groovy-1.6.3" />
-    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" />
-    <classpathentry kind="lib" path="lib-common/commons-logging-1.0.4.jar" />
-    <classpathentry kind="lib" path="lib-common/servlet-api.jar" />
-    <classpathentry kind="lib" path="lib-common/hibernate325-mod.jar" />
-    <classpathentry kind="lib" path="lib-common/openmrs-api-1.5.0.6483-dev.jar" />
-    <classpathentry kind="lib" path="lib-common/web-openmrs-api-1.5.0.6483-dev.jar" />
-    <classpathentry kind="lib" path="lib-common/tests-openmrs-api-1.5.0.7405-dev.jar" />
-    <classpathentry kind="lib" path="lib-common/junit-4.4.jar" />
-    <classpathentry kind="lib" path="lib-common/hsqldb.jar" />
-    <classpathentry kind="lib" path="lib-common/simple-xml-1.6.1-mod.jar" />
-    <classpathentry kind="lib" path="lib-common/dbunit-2.2.jar" />
-    <classpathentry kind="lib" path="lib-common/spring-webmvc.jar" />
-    <classpathentry kind="lib" path="lib-common/spring-2.5.1.jar" />
-    <classpathentry kind="lib" path="lib/ant-1.7.0.jar" />
-    <classpathentry kind="lib" path="lib/ant-launcher.jar" />
-    <classpathentry kind="lib" path="lib-common/mail.jar" />
-    <classpathentry kind="lib" path="lib/groovy-all-1.6.3.jar" />
-    <classpathentry kind="lib" path="lib-common/spring-webmvc.jar" />
-    <classpathentry kind="output" path="build" />
+	<classpathentry kind="src" path="metadata"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="web/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/groovy-1.6.3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib-common/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="lib-common/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib-common/hibernate325-mod.jar"/>
+	<classpathentry kind="lib" path="lib-common/openmrs-api-1.5.0.6483-dev.jar"/>
+	<classpathentry kind="lib" path="lib-common/web-openmrs-api-1.5.0.6483-dev.jar"/>
+	<classpathentry kind="lib" path="lib-common/tests-openmrs-api-1.5.0.7405-dev.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/-4.4.jar"/>
+	<classpathentry kind="lib" path="lib-common/hsqldb.jar"/>
+	<classpathentry kind="lib" path="lib-common/simple-xml-1.6.1-mod.jar"/>
+	<classpathentry kind="lib" path="lib-common/dbunit-2.2.jar"/>
+	<classpathentry kind="lib" path="lib-common/spring-webmvc.jar"/>
+	<classpathentry kind="lib" path="lib-common/spring-2.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/ant-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/ant-launcher.jar"/>
+	<classpathentry kind="lib" path="lib-common/mail.jar"/>
+	<classpathentry kind="lib" path="lib/groovy-all-1.6.3.jar"/>
+	<classpathentry kind="lib" path="lib-common/spring-webmvc.jar"/>
+	<classpathentry kind="output" path="build"/>
 </classpath>
-
