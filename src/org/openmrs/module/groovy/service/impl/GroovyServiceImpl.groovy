@@ -15,20 +15,20 @@ package org.openmrs.module.groovy.service.impl;
 
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.groovy.service.GroovyModuleService;
+import org.openmrs.module.groovy.service.GroovyService;
 import org.openmrs.module.groovy.GroovyScript;
-import org.openmrs.module.groovy.db.hibernate.GroovyModuleDAO;
+import org.openmrs.module.groovy.db.hibernate.GroovyDAO;
 import org.openmrs.User;
 
 import java.util.List;
 import java.util.Date;
 
 
-public class GroovyModuleServiceImpl extends BaseOpenmrsService implements GroovyModuleService {
+public class GroovyServiceImpl extends BaseOpenmrsService implements GroovyService {
 
-  GroovyModuleDAO dao;
+  GroovyDAO dao;
 
-  public void setDao(final GroovyModuleDAO dao) {
+  public void setDao(final GroovyDAO dao) {
     this.dao = dao;
   }
 

@@ -13,15 +13,15 @@
  */
 package org.openmrs.module.groovy.db.hibernate.impl;
 
-import org.openmrs.module.groovy.db.hibernate.GroovyModuleDAO;
-import org.openmrs.module.groovy.GroovyScript;
-import org.hibernate.SessionFactory;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
-
 import java.util.List;
 
-public class GroovyModuleDAOImpl implements GroovyModuleDAO {
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.openmrs.module.groovy.GroovyScript;
+import org.openmrs.module.groovy.db.hibernate.GroovyDAO;
+
+public class GroovyDAOImpl implements GroovyDAO {
      private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {

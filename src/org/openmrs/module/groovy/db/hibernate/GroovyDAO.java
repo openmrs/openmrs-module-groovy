@@ -11,26 +11,20 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.groovy.service;
+package org.openmrs.module.groovy.db.hibernate;
 
-import org.openmrs.module.groovy.GroovyScript;
-import org.openmrs.api.OpenmrsService;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
-public interface GroovyModuleService extends OpenmrsService {
-    
-    @Transactional(readOnly=true)
+import org.openmrs.module.groovy.GroovyScript;
+
+public interface GroovyDAO {
+
     List<GroovyScript> getAllScripts();
 
-    @Transactional(readOnly=true)
     GroovyScript getScriptById(Integer id);
 
-    @Transactional
     GroovyScript saveGroovyScript(GroovyScript script);
 
-    @Transactional
-    void deleteGroovyScript(GroovyScript script);    
+    void deleteGroovyScript(GroovyScript script);
 }

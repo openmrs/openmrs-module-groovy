@@ -16,12 +16,14 @@
 	<classpathentry kind="lib" path="lib-common/hsqldb.jar"/>
 	<classpathentry kind="lib" path="lib-common/simple-xml-1.6.1-mod.jar"/>
 	<classpathentry kind="lib" path="lib-common/dbunit-2.2.jar"/>
-	<classpathentry kind="lib" path="lib-common/spring-webmvc.jar"/>
-	<classpathentry kind="lib" path="lib-common/spring-2.5.1.jar"/>
 	<classpathentry kind="lib" path="lib/ant-1.7.0.jar"/>
 	<classpathentry kind="lib" path="lib/ant-launcher.jar"/>
 	<classpathentry kind="lib" path="lib-common/mail.jar"/>
-	<classpathentry kind="lib" path="lib/groovy-all-1.6.3.jar"/>
-	<classpathentry kind="lib" path="lib-common/spring-webmvc.jar"/>
+	<classpathentry kind="lib" path="lib-common/junit-4.4.jar"/>
+	<classpathentry kind="lib" path="lib-common/org.springframework.aop-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib-common/org.springframework.context-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib-common/org.springframework.transaction-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib-common/org.springframework.web-3.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/groovy-all-1.7.4.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

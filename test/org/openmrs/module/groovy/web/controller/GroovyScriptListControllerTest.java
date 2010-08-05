@@ -1,8 +1,9 @@
 package org.openmrs.module.groovy.web.controller;
 
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
 
 public class GroovyScriptListControllerTest {
     @Before

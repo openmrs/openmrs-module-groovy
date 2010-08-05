@@ -13,26 +13,20 @@
 
 --%>
 <%@ include file="/WEB-INF/template/include.jsp" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <openmrs:require privilege="Run Groovy Scripts" otherwise="/login.htm" redirect="/module/groovy/groovy.form"/>
 
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <openmrs:htmlInclude file="/dwr/interface/DWRGroovyService.js"/>
 <openmrs:htmlInclude file="/dwr/engine.js"/>
 <openmrs:htmlInclude file="/dwr/util.js"/>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/moduleResources/groovy/js/jquery-1.3.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/moduleResources/groovy/js/jquery-ui-1.7.1.custom.min.js"
-        type="text/javascript"></script>
-
+<openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery-ui.custom.min.js" />
+<openmrs:htmlInclude file="/scripts/jquery-ui/js/jquery-ui-1.7.2.custom.min.js" />
+<openmrs:htmlInclude file="/scripts/jquery-ui/css/redmond/jquery-ui-1.7.2.custom.css" />
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/moduleResources/groovy/js/codemirror.js"></script>
 
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/moduleResources/groovy/js/mirrorframe.js"></script>
-
-<link rel="stylesheet" type="text/css"
-      href="${pageContext.request.contextPath}/moduleResources/groovy/css/redmond/jquery-ui-1.7.1.custom.css"/>
 
 <link rel="stylesheet" type="text/css"
       href="${pageContext.request.contextPath}/moduleResources/groovy/css/main.css"/>
@@ -104,7 +98,7 @@
         autoMatchParens: true,
         tabMode: "spaces",
         submitFunction: function() {
-            $("#executeButton").click();
+            $j("#executeButton").click();
         },
         saveFunction:function() {
             document.forms["scriptForm"].submit();

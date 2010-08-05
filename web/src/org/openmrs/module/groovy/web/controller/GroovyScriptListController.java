@@ -1,18 +1,18 @@
 package org.openmrs.module.groovy.web.controller;
 
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.groovy.GroovyScript;
 import org.openmrs.module.groovy.GroovyUtil;
-import org.openmrs.module.groovy.service.GroovyModuleService;
+import org.openmrs.module.groovy.service.GroovyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 
 @Controller
@@ -39,7 +39,7 @@ public class GroovyScriptListController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String delete(@RequestParam(value="id",required=true) Integer id, final ModelMap map) {
-        GroovyModuleService svc = GroovyUtil.getService();
+        GroovyService svc = GroovyUtil.getService();
         GroovyScript script = svc.getScriptById(id);
         if(script != null) {
             svc.deleteGroovyScript(script);

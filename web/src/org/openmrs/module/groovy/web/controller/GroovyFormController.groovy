@@ -13,24 +13,23 @@
  */
 package org.openmrs.module.groovy.web.controller
 
-import javax.servlet.http.HttpServletRequest
-import org.apache.commons.logging.Log
-import org.apache.commons.logging.LogFactory
-import org.openmrs.api.context.Context
-import org.openmrs.module.groovy.GroovyScript
-import org.openmrs.module.groovy.GroovyUtil
-import org.openmrs.module.groovy.service.GroovyModuleService
-import org.openmrs.module.groovy.validators.GroovyScriptValidator
-import org.springframework.stereotype.Controller
-import org.springframework.ui.ModelMap
-import org.springframework.validation.BindingResult
-import org.springframework.web.bind.ServletRequestBindingException
-import org.springframework.web.bind.ServletRequestUtils
-import org.springframework.web.bind.annotation.ModelAttribute
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.RequestParam
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.openmrs.module.groovy.GroovyScript;
+import org.openmrs.module.groovy.GroovyUtil;
+import org.openmrs.module.groovy.validators.GroovyScriptValidator 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute 
+import org.springframework.web.bind.annotation.RequestMapping 
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam 
 import org.springframework.web.bind.support.SessionStatus;
+
+import org.springframework.web.bind.*;
 
 /**
  * This controller backs and saves the Groovy module settings
@@ -44,10 +43,9 @@ public class GroovyFormController {
      */
     protected final Log log = LogFactory.getLog(getClass());
 
-
-    @RequestMapping(method = RequestMethod.GET )    
+    @RequestMapping(method = RequestMethod.GET)    
     public String setupForm(@RequestParam(value="id",required=false) Integer id, ModelMap model, final HttpServletRequest request) {
-        GroovyScript script = id != null ? Context.getService(GroovyModuleService.class).getScriptById(id) : new GroovyScript();
+        GroovyScript script = id != null ? GroovyUtil.getService().getScriptById(id) : new GroovyScript();
         model.addAttribute("script", script);
         return "/module/groovy/groovyForm";
     }

@@ -1,54 +1,52 @@
-$(document).ready(function() {
-    $(function() {
-        $('#tabs').tabs();
-        $('#textarea-container').resizable({
-            handles: 's',
-            alsoResize: 'iframe',
-            minHeight: 220,
-            maxHeight: 475
-        });
+$j(document).ready(function() {
+    $j('#tabs').tabs();
+    $j('#textarea-container').resizable({
+        handles: 's',
+        alsoResize: 'iframe',
+        minHeight: 220,
+        maxHeight: 475
     });
 
-    $('#executeButton').click(function(event) {
+    $j('#executeButton').click(function(event) {
         exec();
     });
 });
 
 function exec() {
-    $('#executeButton').attr('disabled', true);
-    $('#tabs').tabs('select', 1);
-    $('#output').html($('#running-html').html()).fadeIn();
+    $j('#executeButton').attr('disabled', true);
+    $j('#tabs').tabs('select', 1);
+    $j('#output').html($j('#running-html').html()).fadeIn();
     var script = editor.getCode();
     DWRGroovyService.eval(script, function(data) {
-        $('#output').html("").fadeIn();
-        $('#result').html("");
-        $('#stacktrace').html("");
+        $j('#output').html("").fadeIn();
+        $j('#result').html("");
+        $j('#stacktrace').html("");
 
         // display result
         if (data[0] == "Insufficient Privileges") {
-            $("#noPrivileges").fadeIn();
+            $j("#noPrivileges").fadeIn();
         } else if (data[0] != "null") {
-            $('#tabs').tabs('select', 0);
-            $('#result').html(data[0]).fadeIn();
+            $j('#tabs').tabs('select', 0);
+            $j('#result').html(data[0]).fadeIn();
         } else {
-            $('#result').fadeOut();
+            $j('#result').fadeOut();
         }
 
         // display output
         if (data[1] != "") {
-            $('#tabs').tabs('select', 1);
-            $('#output').html(data[1]).fadeIn();
+            $j('#tabs').tabs('select', 1);
+            $j('#output').html(data[1]).fadeIn();
         } else {
-            $('#output').fadeOut();
+            $j('#output').fadeOut();
         }
 
         // display stacktrace
         if (data[2] != "") {
-            $('#tabs').tabs('select', 2);
-            $('#stacktrace').html(data[2]).fadeIn();
+            $j('#tabs').tabs('select', 2);
+            $j('#stacktrace').html(data[2]).fadeIn();
         } else {
-            $('#stacktrace').fadeOut();
+            $j('#stacktrace').fadeOut();
         }
-        $('#executeButton').attr('disabled', false);
+        $j('#executeButton').attr('disabled', false);
     });
 }

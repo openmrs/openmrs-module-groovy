@@ -13,13 +13,18 @@
  */
 package org.openmrs.module.groovy
 
-import org.apache.commons.logging.Log
-import org.apache.commons.logging.LogFactory
-import org.codehaus.groovy.control.CompilationFailedException
-import org.codehaus.groovy.control.MultipleCompilationErrorsException
-import org.openmrs.api.APIAuthenticationException
-import org.openmrs.api.context.Context
-import org.openmrs.module.groovy.service.GroovyModuleService
+import groovy.lang.Binding;
+import groovy.lang.GroovyShell;
+import org.codehaus.groovy.control.CompilationFailedException;
+import org.openmrs.api.APIAuthenticationException 
+import org.openmrs.api.context.Context;
+
+import java.io.StringWriter;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.codehaus.groovy.control.MultipleCompilationErrorsException 
+import org.openmrs.module.groovy.service.GroovyService;
 
 class GroovyUtil {
   private Log log = LogFactory.getLog(getClass())
@@ -42,6 +47,7 @@ class GroovyUtil {
     binding.setVariable("encounter", Context.getEncounterService())
     binding.setVariable("form", Context.getFormService())
     binding.setVariable("locale", Context.getLocale())
+    binding.setVariable("location", Context.getLocationService())
     binding.setVariable("logic", Context.getLogicService())
     binding.setVariable("obs", Context.getObsService())
     binding.setVariable("order", Context.getOrderService())
@@ -110,8 +116,8 @@ class GroovyUtil {
     return ret
   }
 
-  public static GroovyModuleService getService() {
-    return Context.getService(GroovyModuleService.class)
+  public static GroovyService getService() {
+    return Context.getService(GroovyService.class)
   }
 
   /**
