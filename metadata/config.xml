@@ -6,7 +6,8 @@
     <!-- Base Module Properties -->
     <id>groovy</id>
     <name>Groovy</name>
-    <version>2.0</version>
+    <version>2.1</version>
+    <!-- 2.1 Added new name dialog for editing script name -->
     <!-- 2.0 Groovy 1.7.4, added line numbers; syntax highlighting; made the text area bigger,
               minor refactoring; save/loading for scripts -->
     <!-- 1.2 Groovy 1.5.4, added patientSet, displays "Running..." while running -->

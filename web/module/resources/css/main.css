@@ -1,15 +1,3 @@
-body {
-	font-family: Arial sans-serif;
-	margin: 0px;
-}
-
-h1 {
-	background: #5C9CCC url('../css/redmond/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png') repeat-x scroll 50% 50%;
-	padding: 5px;
-	margin: 0px;
-	color: white;
-}
-
 .border {
 	background-color: #FAFAFF;
 	border: 1px solid gray;
@@ -17,6 +5,28 @@ h1 {
 
 .hidden {
 	display: none;
+}
+
+#script-name {
+  text-align: center;
+  background: #5C9CCC url('../images/ui-bg_gloss-wave_55_5c9ccc_500x100.png') repeat-x scroll 50% 50%;
+  color: white;
+  font-weight: bold;
+}
+
+fieldset {
+	padding:0;
+	border:0;
+	margin-top:25px;
+}
+
+.ui-dialog .ui-state-error {
+	padding: .3em;
+}
+
+.validateTips {
+	border: 1px solid transparent;
+	padding: 0.3em;
 }
 
 #textarea-container {

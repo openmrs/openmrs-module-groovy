@@ -24,44 +24,29 @@
 <openmrs:htmlInclude file="/scripts/jquery-ui/css/redmond/jquery-ui-1.7.2.custom.css" />
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/moduleResources/groovy/js/codemirror.js"></script>
-
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/moduleResources/groovy/js/mirrorframe.js"></script>
-
 <link rel="stylesheet" type="text/css"
       href="${pageContext.request.contextPath}/moduleResources/groovy/css/main.css"/>
-
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/moduleResources/groovy/js/main.js"></script>
+        
 <p>
     <a href="groovy.list"><spring:message code="groovy.manage"/></a> |
     <a href="groovy.form"><spring:message code="groovy.new"/></a>
 </p>
 
-<p>
-    <spring:message code="groovy.info"/><br/>
-    <br/>
-    <spring:message code="groovy.info2"/><br/>
-</p>
+
 <form:form id="scriptForm" commandName="script" name="scriptForm">
     <form:errors path="*" cssClass="error"/>
-    <c:if test="${ fn:length(script.name) > 0}">
-        <span id="header"><h1 align="center">${script.name}</h1></span></h1>
-    </c:if>
+    <form:hidden path="name" id="name" /> 
+    <div id="script-name">${fn:length(script.name) > 0 ? script.name : "untitled"}</div>
     <div id="textarea-container" class="border">
         <form:textarea path="script" cols="140" rows="40" id="groovyScript"/>
     </div>
-    <label for="name">Script Name:</label>
-    <form:input path="name" id="name"/>    
-    <%-- this is request specific --%>
-    <spring:message code="groovy.saveAsNew"/> <input type="checkbox" name="saveAsNew" value="yes"/>
-
     <div id="button-bar">
 	    <input id="executeButton" type="button" value="<spring:message code="groovy.execute"/>"/>&nbsp;
         <input type="submit" value="<spring:message code="groovy.save"/>"/>
-        <br/>
-        <a href="http://groovy.codehaus.org/Documentation" target="_groovy_doc"><spring:message
-        code="groovy.documentation-link"/></a>&nbsp;
     </div>    
 </form:form>
 
@@ -86,6 +71,26 @@
     </div>                                      </div>
 <div id="running-html" class="hidden"><h1><spring:message code="groovy.running"/></h1></div>
 <div id="noPrivileges" class="hidden"><h1><spring:message code="groovy.insufficentPrivileges"/></h1></div>
+
+<ul id="groovy-resources">
+    <li><spring:message code="groovy.info"/></li>
+    <li><spring:message code="groovy.info2"/></li>
+    <li><a href="http://groovy.codehaus.org/Documentation" target="_groovy_doc"><spring:message code="groovy.documentation-link"/></a></li>
+</ul>
+
+
+<div id="name-dialog" title="Edit script name">
+	<p class="validateTips">Name is required.</p>
+
+	<form>
+	<fieldset>
+		<label for="new-name">Name</label>
+		<input type="text" name="new-name" id="new-name" class="text ui-widget-content ui-corner-all" />
+	</fieldset>
+	</form>
+</div>
+
+
 <script language="javascript">                                                                                                                    
     var editor = CodeMirror.fromTextArea('groovyScript', {
         height: "300px",

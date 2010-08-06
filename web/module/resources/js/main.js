@@ -1,5 +1,6 @@
 $j(document).ready(function() {
     $j('#tabs').tabs();
+
     $j('#textarea-container').resizable({
         handles: 's',
         alsoResize: 'iframe',
@@ -10,6 +11,91 @@ $j(document).ready(function() {
     $j('#executeButton').click(function(event) {
         exec();
     });
+    
+    $j('#script-name').click(function(event) {
+    	$j('#name-dialog').dialog('open');
+    });
+
+    var newName = $j("#new-name"),
+		allFields = $j([]).add(newName);
+    var tips = $j(".validateTips");
+
+    function updateTips(t) {
+		tips
+			.text(t)
+			.addClass('ui-state-highlight');
+		setTimeout(function() {
+			tips.removeClass('ui-state-highlight', 1500);
+		}, 500);
+    }
+
+    function checkLength(o,n,min,max) {
+
+		if ( o.val().length > max || o.val().length < min ) {
+			o.addClass('ui-state-error');
+			updateTips("Length of " + n + " must be between "+min+" and "+max+".");
+			return false;
+		} else {
+			return true;
+		}
+
+    }
+
+	function checkRegexp(o,regexp,n) {
+
+		if ( !( regexp.test( o.val() ) ) ) {
+			o.addClass('ui-state-error');
+			updateTips(n);
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+		
+	$j('#name-dialog').dialog({
+		autoOpen: false,
+		height: 300,
+		width: 350,
+		modal: true,
+		resizable: false,
+		buttons: {
+			'Change Name': function() {
+				var bValid = true;
+				allFields.removeClass('ui-state-error');
+
+				bValid = bValid && checkLength(newName,'name',2,50);
+				bValid = bValid && checkRegexp(newName,/^[a-z]([0-9a-z_])+$/i,"Username may consist of a-z, 0-9, underscores, begin with a letter.");
+				
+				if (bValid) {
+					$j('#name').val(newName.val());
+					$j('#script-name').html(newName.val());
+					$j(this).dialog('close');
+				}
+			},
+			Cancel: function() {
+				$j(this).dialog('close');
+			}
+		},
+		open: function() {
+			newName.val($j('#name').val());
+			newName.focus();
+			newName.select();
+
+		    // Prevent enter key from submitting page in name dialog
+		    newName.keydown(function(event) {
+		        if (event.which === $j.ui.keyCode.ENTER) {
+		        	$j('.ui-dialog-buttonpane > button:first').click();
+		            event.preventDefault();
+		        }
+		    });
+		    
+		},
+		close: function() {
+			allFields.val('').removeClass('ui-state-error');
+		}
+	});
+
 });
 
 function exec() {
