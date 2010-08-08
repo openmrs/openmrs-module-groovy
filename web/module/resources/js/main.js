@@ -13,13 +13,21 @@ $j(document).ready(function() {
     });
     
     $j('#script-name').click(function(event) {
-    	$j('#name-dialog').dialog('open');
+    	$j('#rename-dialog').dialog('open');
     });
 
     var newName = $j("#new-name"),
 		allFields = $j([]).add(newName);
     var tips = $j(".validateTips");
 
+    // Prevent enter key from submitting page in name dialog
+    newName.keydown(function(event) {
+        if (event.which === $j.ui.keyCode.ENTER) {
+        	$j('.ui-dialog-buttonpane > button:first').click();
+            event.preventDefault();
+        }
+    });
+    
     function updateTips(t) {
 		tips
 			.text(t)
@@ -33,7 +41,7 @@ $j(document).ready(function() {
 
 		if ( o.val().length > max || o.val().length < min ) {
 			o.addClass('ui-state-error');
-			updateTips("Length of " + n + " must be between "+min+" and "+max+".");
+			updateTips($j('#invalid-name-length-msg').text());
 			return false;
 		} else {
 			return true;
@@ -52,44 +60,44 @@ $j(document).ready(function() {
 		}
 
 	}
+
+	// Setup dialog buttons using localized text from hidden divs
+	var nameDialogButtons = {};
+	nameDialogButtons[$j('#rename-dialog-submit').text()] = function() {
+		var bValid = true;
+		allFields.removeClass('ui-state-error');
+
+		bValid = bValid && checkLength(newName,'name',1,50);
+		bValid = bValid && checkRegexp(newName,/^[a-z]([0-9a-z_])*$/i,$j('#invalid-name-pattern-msg').text());
 		
-	$j('#name-dialog').dialog({
+		if (bValid) {
+			$j('#name').val(newName.val());
+			$j('#script-name').text(newName.val());
+			$j(this).dialog('close');
+		}
+	};
+	nameDialogButtons[$j('#rename-dialog-cancel').text()] = function() {
+		$j(this).dialog('close');
+	};
+	
+	$j('#rename-dialog').dialog({
 		autoOpen: false,
-		height: 300,
-		width: 350,
+		position: ['center', 50],
+		height: 250,
+		width: 400,
 		modal: true,
 		resizable: false,
-		buttons: {
-			'Change Name': function() {
-				var bValid = true;
-				allFields.removeClass('ui-state-error');
-
-				bValid = bValid && checkLength(newName,'name',2,50);
-				bValid = bValid && checkRegexp(newName,/^[a-z]([0-9a-z_])+$/i,"Username may consist of a-z, 0-9, underscores, begin with a letter.");
-				
-				if (bValid) {
-					$j('#name').val(newName.val());
-					$j('#script-name').html(newName.val());
-					$j(this).dialog('close');
-				}
-			},
-			Cancel: function() {
-				$j(this).dialog('close');
-			}
-		},
+		buttons: nameDialogButtons,
 		open: function() {
+			// clear any old tips
+			tips.text('');
+			tips.removeClass('ui-state-highlight');
+			allFields.removeClass('ui-state-error');
+			
+			// initialize new name value and grab focus
 			newName.val($j('#name').val());
 			newName.focus();
-			newName.select();
-
-		    // Prevent enter key from submitting page in name dialog
-		    newName.keydown(function(event) {
-		        if (event.which === $j.ui.keyCode.ENTER) {
-		        	$j('.ui-dialog-buttonpane > button:first').click();
-		            event.preventDefault();
-		        }
-		    });
-		    
+			newName.select();		    
 		},
 		close: function() {
 			allFields.val('').removeClass('ui-state-error');

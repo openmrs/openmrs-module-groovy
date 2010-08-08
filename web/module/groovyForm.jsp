@@ -40,13 +40,13 @@
 <form:form id="scriptForm" commandName="script" name="scriptForm">
     <form:errors path="*" cssClass="error"/>
     <form:hidden path="name" id="name" /> 
-    <div id="script-name">${fn:length(script.name) > 0 ? script.name : "untitled"}</div>
+    <div id="script-name" title="<spring:message code="groovy.renameDialogHint"/>">${fn:length(script.name) > 0 ? script.name : "untitled"}</div>
     <div id="textarea-container" class="border">
         <form:textarea path="script" cols="140" rows="40" id="groovyScript"/>
     </div>
     <div id="button-bar">
 	    <input id="executeButton" type="button" value="<spring:message code="groovy.execute"/>"/>&nbsp;
-        <input type="submit" value="<spring:message code="groovy.save"/>"/>
+        <input id="saveButton" type="submit" value="<spring:message code="groovy.save"/>"/>
     </div>    
 </form:form>
 
@@ -79,12 +79,15 @@
 </ul>
 
 
-<div id="name-dialog" title="Edit script name">
-	<p class="validateTips">Name is required.</p>
-
+<div id="invalid-name-length-msg" class="hidden"><spring:message code="groovy.invalidNameLength"/></div>
+<div id="invalid-name-pattern-msg" class="hidden"><spring:message code="groovy.invalidNamePattern"/></div>
+<div id="rename-dialog-submit" class="hidden"><spring:message code="groovy.renameDialogSubmit"/></div>
+<div id="rename-dialog-cancel" class="hidden"><spring:message code="groovy.renameDialogCancel"/></div>
+<div id="rename-dialog" title="<spring:message code="groovy.renameDialogTitle"/>">
+	<p class="validateTips"></p>
 	<form>
 	<fieldset>
-		<label for="new-name">Name</label>
+		<label for="new-name"><spring:message code="groovy.newName"/></label>
 		<input type="text" name="new-name" id="new-name" class="text ui-widget-content ui-corner-all" />
 	</fieldset>
 	</form>

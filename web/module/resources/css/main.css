@@ -12,6 +12,7 @@
   background: #5C9CCC url('../images/ui-bg_gloss-wave_55_5c9ccc_500x100.png') repeat-x scroll 50% 50%;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 fieldset {
