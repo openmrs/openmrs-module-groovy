@@ -68,7 +68,7 @@ $j(document).ready(function() {
 		allFields.removeClass('ui-state-error');
 
 		bValid = bValid && checkLength(newName,'name',1,50);
-		bValid = bValid && checkRegexp(newName,/^[a-z]([0-9a-z_])*$/i,$j('#invalid-name-pattern-msg').text());
+		bValid = bValid && checkRegexp(newName,/^[a-z]([0-9a-z_ \-])*$/i,$j('#invalid-name-pattern-msg').text());
 		
 		if (bValid) {
 			$j('#name').val(newName.val());

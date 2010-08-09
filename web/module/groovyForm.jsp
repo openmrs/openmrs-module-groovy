@@ -30,12 +30,8 @@
       href="${pageContext.request.contextPath}/moduleResources/groovy/css/main.css"/>
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/moduleResources/groovy/js/main.js"></script>
-        
-<p>
-    <a href="groovy.list"><spring:message code="groovy.manage"/></a> |
-    <a href="groovy.form"><spring:message code="groovy.new"/></a>
-</p>
 
+<%@ include file="localHeader.jsp" %>
 
 <form:form id="scriptForm" commandName="script" name="scriptForm">
     <form:errors path="*" cssClass="error"/>

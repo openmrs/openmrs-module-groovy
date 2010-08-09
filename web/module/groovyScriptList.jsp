@@ -17,10 +17,13 @@
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <link rel="stylesheet" type="text/css"
       href="${pageContext.request.contextPath}/moduleResources/groovy/css/main.css"/>
-<a href="groovy.form"><spring:message code="groovy.create"/></a>
+
+<%@ include file="localHeader.jsp" %>
+
 <p>
     <spring:message code="groovy.list.info"/>
 </p>
+
 <c:choose>
     <c:when test="${ fn:length(scripts) > 0}">
         <table style="border: dashed 1px #000;" border="1px; " >
