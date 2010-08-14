@@ -109,9 +109,17 @@ public class GroovyScript {
         result = 31 * result + name.hashCode();
         result = 31 * result + script.hashCode();
         result = 31 * result + created.hashCode();
-        result = 31 * result + modified.hashCode();
+        if (modified == null) {
+        	result = 31 * result;
+        } else {
+        	result = 31 * result + modified.hashCode();
+        }
         result = 31 * result + creator.hashCode();
-        result = 31 * result + modifiedBy.hashCode();
+        if (modifiedBy == null) {
+        	result = 31 * result;
+        } else {
+        	result = 31 * result + modifiedBy.hashCode();
+        }
         return result;
     }
 }
