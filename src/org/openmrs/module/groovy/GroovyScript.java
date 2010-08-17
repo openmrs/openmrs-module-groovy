@@ -106,15 +106,31 @@ public class GroovyScript {
     @Override
     public int hashCode() {
         int result = 7;
-        result = 31 * result + name.hashCode();
-        result = 31 * result + script.hashCode();
-        result = 31 * result + created.hashCode();
+        if (name == null) {
+        	result = 31 * result;
+        } else {
+        	result = 31 * result + name.hashCode();
+        }
+        if (script == null) {
+        	result = 31 * result;
+        } else {
+        	result = 31 * result + script.hashCode();
+        }
+        if (created == null) {
+        	result = 31 * result;
+        } else {
+        	result = 31 * result + created.hashCode();
+        }
         if (modified == null) {
         	result = 31 * result;
         } else {
         	result = 31 * result + modified.hashCode();
         }
-        result = 31 * result + creator.hashCode();
+        if (creator == null) {
+        	result = 31 * result;
+        } else {
+        	result = 31 * result + creator.hashCode();
+        }
         if (modifiedBy == null) {
         	result = 31 * result;
         } else {
