@@ -20,7 +20,7 @@ class DWRGroovyService {
 
   String[] eval(String script) {     
     if(Context.hasPrivilege("Run Groovy Scripts")) {
-      return GroovyUtil.getService().evaluate(script)
+      return GroovyUtil.getService().evaluate(script);
     }
     return ["Insufficient Privileges","",""] as String[];
   }
