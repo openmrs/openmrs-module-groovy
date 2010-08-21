@@ -21,7 +21,8 @@ import org.openmrs.module.groovy.db.hibernate.GroovyDAO;
 import org.openmrs.User;
 
 import java.util.List;
-import java.util.Date;
+import java.util.Date
+import org.openmrs.module.groovy.GroovyUtil;
 
 
 public class GroovyServiceImpl extends BaseOpenmrsService implements GroovyService {
@@ -66,4 +67,15 @@ public class GroovyServiceImpl extends BaseOpenmrsService implements GroovyServi
     dao.saveGroovyScript(script);
     return script;
   }
+
+  /**
+   * Delegate method
+   * @param script
+   * @return an array containing: the result, output and stack trace (if applicable).
+   */
+  String[] evaluate(String script) {
+    return GroovyUtil.evaluate(script);
+  }
+
+
 }

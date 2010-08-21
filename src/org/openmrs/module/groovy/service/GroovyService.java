@@ -32,5 +32,12 @@ public interface GroovyService extends OpenmrsService {
     GroovyScript saveGroovyScript(GroovyScript script);
 
     @Transactional
-    void deleteGroovyScript(GroovyScript script);    
+    void deleteGroovyScript(GroovyScript script);
+
+    /**
+     * Delegates to the GroovyUtil.evaluate(String) method.
+     * @param script
+     * @return
+     */
+    String[] evaluate(final String script);
 }
