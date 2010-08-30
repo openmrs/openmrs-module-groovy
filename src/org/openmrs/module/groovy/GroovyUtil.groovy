@@ -13,18 +13,13 @@
  */
 package org.openmrs.module.groovy
 
-import groovy.lang.Binding;
-import groovy.lang.GroovyShell;
-import org.codehaus.groovy.control.CompilationFailedException;
-import org.openmrs.api.APIAuthenticationException 
-import org.openmrs.api.context.Context;
-
-import java.io.StringWriter;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.codehaus.groovy.control.MultipleCompilationErrorsException 
-import org.openmrs.module.groovy.service.GroovyService;
+import org.apache.commons.logging.Log
+import org.apache.commons.logging.LogFactory
+import org.codehaus.groovy.control.CompilationFailedException
+import org.codehaus.groovy.control.MultipleCompilationErrorsException
+import org.openmrs.api.APIAuthenticationException
+import org.openmrs.api.context.Context
+import org.openmrs.module.groovy.service.GroovyService
 
 class GroovyUtil {
   private Log log = LogFactory.getLog(getClass())
