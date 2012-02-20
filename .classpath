@@ -24,6 +24,6 @@
 	<classpathentry kind="lib" path="lib-common/org.springframework.context-3.0.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib-common/org.springframework.transaction-3.0.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib-common/org.springframework.web-3.0.2.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/groovy-all-1.7.4.jar"/>
+	<classpathentry kind="lib" path="lib/groovy-all-1.8.6.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>
