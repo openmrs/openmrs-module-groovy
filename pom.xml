@@ -7,8 +7,8 @@
 	<version>2.2</version>
 	<packaging>pom</packaging>
 	<name>Groovy Module</name>
-	<description>groovy module, to run groovy srcripts</description>
-	<url>http://openmrs.org</url>
+	<description>OpenMRS module allowing admins to run and manage groovy scripts</description>
+	<url>https://wiki.openmrs.org/x/yhAz</url>
 	
 	<developers>
 		<developer>
@@ -22,9 +22,9 @@
 	</organization>
 
 	<scm>
-		<connection>scm:svn:https://svn.openmrs.org/openmrs-modules/groovy/trunk/</connection>
-		<developerConnection>scm:svn:https://svn.openmrs.org/openmrs-modules/groovy/trunk/</developerConnection>
-		<url>https://svn.openmrs.org/openmrs-modules/groovy/trunk/</url>
+		<connection>https://github.com/openmrs/openmrs-module-groovy</connection>
+		<developerConnection>https://github.com/openmrs/openmrs-module-groovy</developerConnection>
+		<url>https://github.com/openmrs/openmrs-module-groovy</url>
 	</scm>
 
 	<modules>
