@@ -8,7 +8,7 @@
 		<version>2.2</version>
 	</parent>
 	
-	<artifactId>${project.parent.artifactId}-api</artifactId>
+	<artifactId>groovy-api</artifactId>
 	<packaging>jar</packaging>
 	<name>Groovy Module Module API</name>
 	<description>API project for GroovyModule</description>
