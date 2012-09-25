@@ -1,4 +1,4 @@
-/**package org.openmrs.module.groovy;
+package org.openmrs.module.groovy;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -13,26 +13,22 @@ import org.openmrs.EncounterType;
 import org.openmrs.Location;
 import org.openmrs.Obs;
 import org.openmrs.Patient;
-import org.openmrs.Person;
 import org.openmrs.api.EncounterService;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.groovy.api.service.GroovyTask;
 import org.openmrs.scheduler.TaskDefinition;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/moduleApplicationContext.xml")
 public class GroovyTaskTest extends BaseModuleContextSensitiveTest  {
 	@Autowired
 	GroovyTask task;
 	
 	@Before
     public void before() throws Exception {
-		//not work
         //executeDataSet("EncounterServiceTest-initialData.xml");
+        executeDataSet("GroovyTaskTest-initialData.xml");
     }
 	
 	@Test
@@ -70,4 +66,3 @@ public class GroovyTaskTest extends BaseModuleContextSensitiveTest  {
 
 	}
 }
-**/
