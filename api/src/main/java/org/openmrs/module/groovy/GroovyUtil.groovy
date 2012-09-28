@@ -51,7 +51,17 @@ class GroovyUtil {
     binding.setVariable("person", Context.getPersonService())
     binding.setVariable("program", Context.getProgramWorkflowService())
     binding.setVariable("user", Context.getUserService())
+    binding.setVariable("fn", new GroovyScriptFunctions())
     return binding
+  }
+
+  private static class GroovyScriptFunctions {
+    def static sql(final String s) {
+      sql(s, true) // default to read-only queries
+    }
+    def static sql(final String s, final boolean readOnly) {
+      return Context.getAdministrationService().executeSQL(s, readOnly)
+    }
   }
 
  static String getBuffer() {
