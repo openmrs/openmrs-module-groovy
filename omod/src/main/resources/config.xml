@@ -5,7 +5,7 @@
 	<!-- Module Properties -->
 	<id>groovy</id>
 	<name>Groovy</name>
-	<version>2.2</version>
+	<version>2.2.1</version>
 	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
 	<author>Burke Mamlin</author>
 	<description>
