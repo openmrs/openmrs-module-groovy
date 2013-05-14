@@ -21,13 +21,14 @@
 		<url>http://openmrs.org</url>
 	</organization>
 
-	<scm>
-		<connection>https://github.com/openmrs/openmrs-module-groovy</connection>
-		<developerConnection>https://github.com/openmrs/openmrs-module-groovy</developerConnection>
-		<url>https://github.com/openmrs/openmrs-module-groovy</url>
-	</scm>
+    <scm>
+        <connection>scm:git:git@github.com:openmrs/openmrs-module-groovy.git</connection>
+        <developerConnection>scm:git:git@github.com:openmrs/openmrs-module-groovy.git</developerConnection>
+        <url>scm:git:git@github.com:openmrs/openmrs-module-groovy.git</url>
+    </scm>
 
-	<modules>
+
+    <modules>
 		<module>api</module>
 		<module>omod</module>
 	</modules>
