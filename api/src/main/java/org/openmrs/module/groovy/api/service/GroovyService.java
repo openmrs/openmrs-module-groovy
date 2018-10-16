@@ -9,12 +9,11 @@
  */
 package org.openmrs.module.groovy.api.service;
 
-import java.util.List;
-
 import org.openmrs.api.OpenmrsService;
 import org.openmrs.module.groovy.GroovyScript;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * This service exposes module's core functionality. It is a Spring managed bean which is configured in moduleApplicationContext.xml.

@@ -9,16 +9,14 @@
  */
 package org.openmrs.module.groovy;
 
-import java.util.Date;
-import java.util.Map;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.module.groovy.GroovyScript;
-import org.openmrs.module.groovy.GroovyUtil;
 import org.openmrs.module.groovy.api.service.GroovyService;
 import org.openmrs.scheduler.tasks.AbstractTask;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.Map;
 
 @Component
 public class GroovyTask extends AbstractTask {

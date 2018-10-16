@@ -9,23 +9,21 @@
  */
 package org.openmrs.module.groovy.api.service.impl;
 
-import org.openmrs.api.impl.BaseOpenmrsService;
+import org.openmrs.User;
 import org.openmrs.api.context.Context;
+import org.openmrs.api.impl.BaseOpenmrsService;
+import org.openmrs.module.groovy.GroovyScript;
+import org.openmrs.module.groovy.GroovyUtil;
 import org.openmrs.module.groovy.api.db.GroovyDAO;
 import org.openmrs.module.groovy.api.service.GroovyService;
-import org.openmrs.module.groovy.GroovyScript;
-import org.openmrs.User;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Date
-import org.openmrs.module.groovy.GroovyUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-@Service
+@Transactional
 public class GroovyServiceImpl extends BaseOpenmrsService implements GroovyService {
-	@Autowired
+
 	private GroovyDAO dao;
 	public void setDao(final GroovyDAO dao) {
 		this.dao = dao;
@@ -40,27 +38,27 @@ public class GroovyServiceImpl extends BaseOpenmrsService implements GroovyServi
 		return dao.getScript(id);
 	}
 
-
 	public void deleteGroovyScript(final GroovyScript script) {
 		dao.deleteGroovyScript(script);
 	}
 
-
 	public GroovyScript saveGroovyScript(final GroovyScript script) {
-		// let's prevent a lovely NPE from occuring.
-		if (!script)
-			throw new IllegalArgumentException("script cannot be null");
+	    if (script == null) {
+            throw new IllegalArgumentException("script cannot be null");
+        }
 		final Date now = new Date();
-		if (!script.created)
-			script.setCreated(now);
-		final User authenticatedUser = Context.getAuthenticatedUser();
-		if (!script.creator)
-			script.setCreator(authenticatedUser);
-		if (script.id) {
-			script.setModified(now);
-			final User modifiedBy = Context.getAuthenticatedUser();
-			script.setModifiedBy(modifiedBy);
-		}
+        final User authenticatedUser = Context.getAuthenticatedUser();
+
+	    if (script.getCreated() == null) {
+	        script.setCreated(now);
+        }
+        if (script.getCreator() == null) {
+            script.setCreator(authenticatedUser);
+        }
+        if (script.getId() != null) {
+            script.setModified(now);
+            script.setModifiedBy(authenticatedUser);
+        }
 		dao.saveGroovyScript(script);
 		return script;
 	}
@@ -70,15 +68,12 @@ public class GroovyServiceImpl extends BaseOpenmrsService implements GroovyServi
 	 * @param script
 	 * @return an array containing: the result, output and stack trace (if applicable).
 	 */
-	String[] evaluate(String script) {
+	public String[] evaluate(String script) {
 		return GroovyUtil.evaluate(script);
 	}
-
 
 	@Override
 	public GroovyScript getScript(String scriptName) {
 		return dao.getScript(scriptName);
 	}
-
-
 }

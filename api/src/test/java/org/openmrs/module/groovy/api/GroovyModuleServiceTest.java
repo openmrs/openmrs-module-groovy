@@ -9,14 +9,15 @@
  */
 package org.openmrs.module.groovy.api;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.groovy.api.service.GroovyService;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
 
+import static org.junit.Assert.assertNotNull;
+
 /**
- * Tests {@link ${GroovyModuleService}}.
+ * Tests {@link {GroovyModuleService}}.
  */
 public class  GroovyModuleServiceTest extends BaseModuleContextSensitiveTest {
 	

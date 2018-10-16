@@ -9,11 +9,10 @@
  */
 package org.openmrs.module.groovy.api.db;
 
-import java.util.List;
-
 import org.openmrs.module.groovy.GroovyScript;
 import org.openmrs.module.groovy.api.service.GroovyService;
-import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  *  Database methods for {@link GroovyService}.

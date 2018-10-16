@@ -14,7 +14,7 @@
  <groovy_scripts id="1" name="hello world" script="print 'hello world'" creator="1" date_created="2012-09-25 00:00:00.0" />
  
  
- <encounter encounter_id="1" encounter_type="1" form_id="1" encounter_datetime="2005-01-01 00:00:00.0" patient_id="3" provider_id="1" location_id="1" creator="1" date_created="2005-01-01 00:00:00.0" voided="0"/>
+ <encounter encounter_id="1" encounter_type="1" form_id="1" encounter_datetime="2005-01-01 00:00:00.0" patient_id="3" location_id="1" creator="1" date_created="2005-01-01 00:00:00.0" voided="0"/>
  <obs obs_id="1" person_id="3" encounter_id="1" concept_id="1" obs_datetime="2005-01-01 00:00:00.0" location_id="1" value_numeric="1.0" creator="1" date_created="2006-02-10 15:57:35.0" voided="false"/>
  <obs obs_id="2" person_id="3" encounter_id="1" concept_id="1" obs_datetime="2005-01-01 00:00:00.0" location_id="1" value_numeric="2.0" creator="1" date_created="2006-02-11 15:57:35.0" voided="false"/>
  

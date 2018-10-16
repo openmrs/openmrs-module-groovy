@@ -10,34 +10,30 @@
     graphic logo is a trademark of OpenMRS Inc.
 
 -->
-
 <module configVersion="1.2">
 
-	<!-- Module Properties -->
 	<id>groovy</id>
 	<name>Groovy</name>
     <version>${project.parent.version}</version>
 	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
 	<author>Burke Mamlin</author>
 	<description>
-		Embedded
-        <a href="http://groovy.codehaus.org/">Groovy</a>
-        module. A foundation or example for other Groovy modules.
+		Embedded <a href="http://groovy.codehaus.org/">Groovy</a> module. A foundation or example for other Groovy modules.
 	</description>
 	<updateURL>https://modules.openmrs.org/modules/download/${project.parent.artifactId}/update.rdf</updateURL>
-	<require_version>1.7.0</require_version>
-	<!-- / Module Properties -->
+	<require_version>1.9.0</require_version>
 
-	
-	<!-- Module Activator -->
+    <aware_of_modules>
+        <aware_of_module>org.openmrs.module.legacyui</aware_of_module>
+    </aware_of_modules>
+
 	<activator>${project.parent.groupId}.${project.parent.artifactId}.GroovyModuleActivator</activator>
-	<!-- Extensions -->
+
     <extension>
         <point>org.openmrs.admin.list</point>
         <class>@MODULE_PACKAGE@.web.extension.html.AdminList</class>
     </extension>
-    <!-- Extensions -->
-	<!-- Required Privileges -->
+
     <privilege>
         <name>Run Groovy Scripts</name>
         <description>Allows user to execute Groovy scripts.</description>
@@ -47,19 +43,6 @@
         <name>List Groovy Scripts</name>
         <description>Allows user to view Groovy scripts which are saved.</description>
     </privilege>
-
-    <!-- /Required Privileges -->
-    <!-- Required Global Properties
-     <globalProperty>
-         <property>@MODULE_ID@.someProperty</property>
-         <defaultValue></defaultValue>
-         <description>
-             A description of the global property goes here.  The description
-             should explain enough for administrators to understand the purpose
-             and possible values for the global property.
-         </description>
-     </globalProperty>
-     /Required Global Properties -->
 
     <dwr>
         <allow>
@@ -80,28 +63,14 @@
         </signatures>
     </dwr>
 
-    <!-- Servlets -->
-    <!-- Accessed through the url /pageContext()/moduleServlet/<moduleId>/<servlet-name>
-     <servlet>
-         <servlet-name>formDownload</servlet-name>
-         <servlet-class>@MODULE_PACKAGE@.web.FormDownloadServlet</servlet-class>
-     </servlet>
-     -->
-    <!-- /Servlets -->
-	<!-- Maps hibernate file's, if present -->
 	<mappingFiles>
-				
 		GroovyScript.hbm.xml
-				
 	</mappingFiles>
 
-	<!-- Internationalization -->
-	<!-- All message codes should start with ${project.parent.artifactId}. -->
 	<messages>
 		<lang>en</lang>
 		<file>messages.properties</file>
-	</messages>	
-	<!-- /Internationalization -->
+	</messages>
 
 </module>
 

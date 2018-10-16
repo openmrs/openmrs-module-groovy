@@ -9,31 +9,26 @@
  */
 package org.openmrs.module.groovy.api.db.hibernate;
 
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.openmrs.api.db.hibernate.DbSessionFactory;
 import org.openmrs.module.groovy.GroovyScript;
 import org.openmrs.module.groovy.api.db.GroovyDAO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * It is a default implementation of  {@link GroovyDAO}.
  */
-@Service
 public class GroovyDAOImpl implements GroovyDAO {
 	protected final Log log = LogFactory.getLog(this.getClass());
+
+	private DbSessionFactory sessionFactory;
 	
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	public void setSessionFactory(SessionFactory sessionFactory) {
+	public void setSessionFactory(DbSessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 

@@ -9,6 +9,7 @@
  */
 package org.openmrs.module.groovy.web.validators;
 
+import org.openmrs.module.groovy.GroovyScript;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;

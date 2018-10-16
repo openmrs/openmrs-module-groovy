@@ -7,17 +7,17 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
-package org.openmrs.module.groovy.web.dwr
+package org.openmrs.module.groovy.web.dwr;
 
-import org.openmrs.api.context.Context
-import org.openmrs.module.groovy.GroovyUtil
+import org.openmrs.api.context.Context;
+import org.openmrs.module.groovy.GroovyUtil;
 
-class DWRGroovyService {
+public class DWRGroovyService {
 
-  String[] eval(String script) {     
+  public String[] eval(String script) {
     if(Context.hasPrivilege("Run Groovy Scripts")) {
       return GroovyUtil.getService().evaluate(script);
     }
-    return ["Insufficient Privileges","",""] as String[];
+    return new String[] {"Insufficient Privileges","",""};
   }
 }
