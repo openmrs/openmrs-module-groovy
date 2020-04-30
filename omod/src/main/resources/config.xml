@@ -23,9 +23,10 @@
 	<updateURL>https://modules.openmrs.org/modules/download/${project.parent.artifactId}/update.rdf</updateURL>
 	<require_version>1.9.0</require_version>
 
-    <aware_of_modules>
-        <aware_of_module>org.openmrs.module.legacyui</aware_of_module>
-    </aware_of_modules>
+    <require_modules>
+        <require_module>org.openmrs.module.legacyui</require_module>
+    </require_modules>
+
 
 	<activator>${project.parent.groupId}.${project.parent.artifactId}.GroovyModuleActivator</activator>
 
