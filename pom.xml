@@ -35,7 +35,7 @@
 	
 	<properties>
 		<openMRSVersion>1.9.9</openMRSVersion>
-		<legacyuiVersion>1.7.0-SNAPSHOT</legacyuiVersion>
+		<legacyuiVersion>1.6.0</legacyuiVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <groovyVersion>1.8.7</groovyVersion>
 	</properties>
@@ -110,10 +110,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.openmrs.web</groupId>
-			<artifactId>openmrs-web</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>legacyui-api</artifactId>
