@@ -30,7 +30,7 @@
 
 <%@ include file="localHeader.jsp" %>
 
-<form:form id="scriptForm" commandName="script" name="scriptForm">
+<form:form id="scriptForm" modelAttribute="script" name="scriptForm">
     <form:errors path="*" cssClass="error"/>
     <form:hidden path="name" id="name" /> 
     <div id="script-name" title="<spring:message code="groovy.renameDialogHint"/>">${fn:length(script.name) > 0 ? script.name : "untitled"}</div>
