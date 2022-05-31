@@ -21,7 +21,7 @@
 		Embedded <a href="http://groovy.codehaus.org/">Groovy</a> module. A foundation or example for other Groovy modules.
 	</description>
 	<updateURL>https://modules.openmrs.org/modules/download/${project.parent.artifactId}/update.rdf</updateURL>
-	<require_version>1.9.0</require_version>
+	<require_version>1.10.0</require_version>
 
     <aware_of_modules>
         <aware_of_module>org.openmrs.module.legacyui</aware_of_module>

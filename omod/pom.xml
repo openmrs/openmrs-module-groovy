@@ -29,8 +29,14 @@
 			<artifactId>${project.parent.artifactId}-api</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-		
-				
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>legacyui-omod</artifactId>
+			<version>1.12.0</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- End OpenMRS modules -->
 		
 
